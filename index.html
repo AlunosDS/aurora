@@ -1,26 +1,174 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <title>Minha Página</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        body {
-            font-family: Arial;
-            background-color: #f2f2f2;
-            margin: 40px;
-        }
-        h1 {
-            color: #333;
-        }
-        p {
-            color: #666;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Aurora - Beleza & Bem-estar</title>
+
+  <!-- Fonte suave e arredondada -->
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet" />
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Quicksand', sans-serif;
+    }
+
+    body {
+      background-color: #f9f6f2;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    header {
+      background-color: white;
+      padding: 40px 20px;
+      text-align: center;
+      border-bottom: 1px solid #eae4dc;
+    }
+
+    header h1 {
+      font-size: 3rem;
+      font-weight: 600;
+      color: #c5a78d;
+      letter-spacing: 1px;
+    }
+
+    nav {
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    nav a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: #8c7b6e;
+      font-weight: 500;
+      font-size: 1rem;
+    }
+
+    .hero {
+      padding: 100px 20px;
+      text-align: center;
+      background-image: url('https://images.unsplash.com/photo-1612437303869-6e4d6e5fc1b2?auto=format&fit=crop&w=1400&q=80');
+      background-size: cover;
+      background-position: center;
+      color: #fff;
+      position: relative;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background-color: rgba(249, 246, 242, 0.6); /* bege claro sobre a imagem */
+      z-index: 0;
+    }
+
+    .hero h2,
+    .hero p {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero h2 {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+      color: #5e5047;
+    }
+
+    .hero p {
+      max-width: 600px;
+      margin: 0 auto;
+      font-size: 1.1rem;
+      color: #5e5047;
+    }
+
+    .services {
+      padding: 60px 20px;
+      background-color: white;
+      text-align: center;
+    }
+
+    .services h3 {
+      font-size: 1.8rem;
+      margin-bottom: 30px;
+      color: #b49b89;
+    }
+
+    .service-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 30px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .service-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 12px;
+    }
+
+    .service-item img {
+      width: 100%;
+      max-width: 220px;
+      border-radius: 8px;
+      object-fit: cover;
+    }
+
+    .service-item p {
+      font-size: 1rem;
+      color: #5a4b43;
+    }
+
+    footer {
+      background-color: #f9f6f2;
+      text-align: center;
+      padding: 30px 20px;
+      color: #998675;
+      font-size: 0.9rem;
+      border-top: 1px solid #eae4dc;
+    }
+
+    @media (max-width: 600px) {
+      .hero h2 {
+        font-size: 1.8rem;
+      }
+    }
+  </style>
 </head>
+
 <body>
-    <h1>Bem-vindo à Minha Página!</h1>
-    <p>Esta é uma página HTML básica feita como exemplo.</p>
-    <p>Você pode adicionar mais conteúdo aqui conforme necessário.</p>
+  <!-- Cabeçalho -->
+  <header>
+    <h1>AURORA</h1>
+    <nav>
+      <a href="#">Início</a>
+      <a href="#">Serviços</a>
+      <a href="#">Sobre</a>
+      <a href="#">Contato</a>
+    </nav>
+  </header>
+
+  <!-- Hero com imagem de fundo suave -->
+  <section class="hero">
+    <h2>Beleza que renasce com você</h2>
+    <p>Bem-vinda ao Aurora, um espaço dedicado ao cuidado feminino com delicadeza, leveza e profissionalismo. Descubra nossos serviços e transforme sua beleza em uma nova fase.</p>
+  </section>
+
+ 
+
+  <!-- Rodapé -->
+  <footer>
+    &copy; 2025 Aurora - Todos os direitos reservados.
+  </footer>
 </body>
 </html>
