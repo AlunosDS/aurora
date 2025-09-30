@@ -1,0 +1,82 @@
+OCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Login Fofo</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      background: linear-gradient(to right, #ffc1e3, #ffe4f2);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .login-container {
+      background-color: #fff0f5;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      width: 300px;
+    }
+
+    .login-container h2 {
+      margin-bottom: 20px;
+      color: #d63384;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 10px;
+      background-color: #ffe4f2;
+    }
+
+    input[type="submit"] {
+      width: 100%;
+      padding: 12px;
+      background-color: #ff69b4;
+      border: none;
+      border-radius: 10px;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #ff85c1;
+    }
+
+    .footer {
+      margin-top: 20px;
+      font-size: 12px;
+      color: #c71585;
+    }
+
+    .hearts {
+      font-size: 20px;
+      margin-bottom: 15px;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <div class="hearts">login</div>
+    <h2>Bem-vinda de volta!</h2>
+    <form action="#" method="post">
+      <input type="text" name="username" placeholder="Seu nome de usuario" required>
+      <input type="password" name="password" placeholder="Sua senha" required>
+      <input type="submit" value="Entrar">
+    </form>
+    <div class="footer">Esqueceu a senha bbzinha? </div>
+  </div>
+</body>
+</html>
