@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Aurora Serviços de Beleza</title>
+  <style>
+    /* Reset básico */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #fff;
+      color: #333;
+      padding: 20px;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      font-weight: 500;
+      color: #5e5047;
+      letter-spacing: 1px;
+    }
+
+    .stories {
+      display: flex;
+      overflow-x: auto;
+      gap: 15px;
+      padding: 10px 0;
+      margin-bottom: 30px;
+    }
+
+    .story {
+      flex: 0 0 auto;
+      text-align: center;
+      cursor: pointer;
+    }
+
+    .story img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      border: 3px solid #c5a78d;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .story:hover img {
+      transform: scale(1.05);
+    }
+
+    .story p {
+      margin-top: 8px;
+      font-size: 0.9rem;
+      color: #8c7b6e;
+    }
+
+    .services {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .service-card {
+      background-color: #fdfdfd;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      padding: 20px;
+      transition: box-shadow 0.3s ease;
+    }
+
+    .service-card:hover {
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .service-card h3 {
+      color: #5e5047;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .service-card p {
+      color: #8c7b6e;
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    /* Scroll leve para os stories */
+    .stories::-webkit-scrollbar {
+      height: 6px;
+    }
+
+    .stories::-webkit-scrollbar-thumb {
+      background: #c5a78d;
+      border-radius: 10px;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 1.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Serviços</h1>
+  </header>
+
+  <section class="stories" id="stories">
+    <!-- Exemplo de stories -->
+  <div class="story" onclick="scrollToService('unhas')">
+      <img src="https://i.pinimg.com/736x/7d/64/72/7d647236e48270522eb71acc63857527.jpg" alt="Fibra de Gel"/>
+      <p>Fibra de Gel</p>
+    </div>
+    <div class="story" onclick="scrollToService('cabelo')">
+      <img src="https://i.pinimg.com/736x/d2/fd/28/d2fd2832d192b0ea4b867ba2bdfcc62a.jpg" alt="Cabelo"/>
+      <p>Cabelo</p>
+    </div>
+    <div class="story" onclick="scrollToService('sobrancelha')">
+      <img src="https://i.pinimg.com/736x/48/1d/68/481d68b336ff8a840bed4f753a5ed659.jpg" alt="Sobrancelha"/>
+      <p>Sobrancelha</p>
+    </div>
+    <div class="story" onclick="scrollToService('cilios')">
+      <img src="https://i.pinimg.com/736x/69/04/57/69045783e0f814aeb72f5e5bc7249a8d.jpg" alt="Extensão de Cílios"/>
+      <p>Extensão de Cílios</p>
+    </div>
+    <div class="story" onclick="scrollToService('depilação a laser')">
+      <img src="https://conteudo.imguol.com.br/c/entretenimento/e7/2022/12/23/depilacao-a-laser-na-axila-axilas-1671805399236_v2_4x3.jpg" alt="depilação a laser"/>
+      <p>Depilação a laser</p>
+    </div>
+    <div class="story" onclick="scrollToService('limpeza de pele')">
+      <img src="https://pvbeauty.com.br/wp-content/uploads/2024/10/limpeza-de-pele-sao-paulo-melhores-lugares-pv-beauty-01.webp" alt="limpeza de pele"/>
+      <p>limpeza de pele</p>
+    </div>
+    <div class="story" onclick="scrollToService('massagem')">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTeAnC7fRnN6IFl_plS79I0RyfbexB0PYIPTQ&s" alt="massagem"/>
+      <p>massagem</p>
+    </div>
+
+  </section>
+
+  <section class="services">
+    <div class="service-card" id="unhas">
+      <h3>Fibra de Gel nas Unhas</h3>
+      <p>Unhas alongadas com acabamento natural e duradouro. Alta resistência e estética impecável.</p>
+    </div>
+    <div class="service-card" id="cabelo">
+      <h3>Tratamento Capilar</h3>
+      <p>Hidratação, reconstrução e nutrição para devolver vida e brilho aos seus cabelos.</p>
+    </div>
+    <div class="service-card" id="corte">
+      <h3>Cortes Femininos</h3>
+      <p>Estilo, leveza e modernidade. Cortes que valorizam seu rosto e personalidade.</p>
+    </div>
+    <div class="service-card" id="mega">
+      <h3>Mega Hair</h3>
+      <p>Alongamento com aparência natural, diversas técnicas para todos os tipos de cabelo.</p>
+    </div>
+    <div class="service-card" id="sobrancelha">
+      <h3>Design de Sobrancelhas</h3>
+      <p>Modelagem precisa e personalizada para harmonizar com o formato do seu rosto.</p>
+    </div>
+    <div class="service-card" id="cilios">
+      <h3>Extensão de Cílios</h3>
+      <p>Olhar marcante com fios delicados, naturais e personalizados ao seu estilo.</p>
+    </div>
+  </section>
+
+  <script>
+    function scrollToService(id) {
+      const section = document.getElementById(id);
+      if (section) {
+        section.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  </script>
+
+</body>
+</html>
