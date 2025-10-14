@@ -175,6 +175,21 @@
       <h3>Extensão de Cílios</h3>
       <p>Olhar marcante com fios delicados, naturais e personalizados ao seu estilo.</p>
     </div>
+<div class="service-card" id="depilação a laser">
+      <h3>Depilação a laser</h3>
+      <p>A depilação a laser é prática, segura e o fim da foliculite.</p>
+    </div>
+    <div class="service-card" id="limpeza de pele">
+      <h3>Limpeza de pele</h3>
+      <p>limpeza de pele remove impurezas, cravos e excesso de oleosidade.
+          mais viço, saúde e aquele glow natural</p>
+    </div>
+    <div class="service-card" id="massagem">
+      <h3>Massagem</h3>
+      <p>Relaxar, aliviar tensões e renovar as energias!
+           A massagem traz bem-estar para corpo e mente.
+            Seu momento de cuidado e equilíbrio</p>
+    </div>
   </section>
 
   <script>
