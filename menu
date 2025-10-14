@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Menu Lateral Direito</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #fff;
+      color: #333;
+    }
+
+    /* Botão de menu no canto direito */
+    .menu-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: #c5a78d;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 5px;
+      color: #fff;
+      font-size: 1rem;
+      cursor: pointer;
+      z-index: 1001;
+    }
+
+    /* Menu lateral no lado direito */
+    .sidebar {
+      position: fixed;
+      top: 0;
+      right: -260px;
+      width: 260px;
+      height: 100%;
+      background-color: #fefefe;
+      box-shadow: -2px 0 8px rgba(0,0,0,0.1);
+      padding: 20px;
+      transition: right 0.3s ease;
+      z-index: 1000;
+      border-left: 1px solid #eee;
+    }
+
+    .sidebar.open {
+      right: 0;
+    }
+
+    .sidebar h2 {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+      color: #5e5047;
+    }
+
+    .sidebar ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .sidebar ul li {
+      padding: 12px 10px;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      cursor: pointer;
+      color: #5e5047;
+      transition: background 0.2s;
+    }
+
+    .sidebar ul li:hover {
+      background-color: #f3f0ee;
+    }
+
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.3);
+      display: none;
+      z-index: 999;
+    }
+
+    .overlay.active {
+      display: block;
+    }
+
+    @media (max-width: 600px) {
+      .sidebar {
+        width: 80%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <button class="menu-toggle" onclick="toggleMenu()">☰ Menu</button>
+
+  <div class="sidebar" id="sidebar">
+    <h2>Menu</h2>
+    <ul>
+      <li onclick="alert('Conta')">Conta</li>
+      <li onclick="alert('Mudar de Conta')">Mudar de Conta</li>
+      <li onclick="alert('Acessibilidade')">Acessibilidade</li>
+      <li onclick="alert('Idioma')">Idioma</li>
+      <li onclick="alert('Configurações')">Configurações</li>
+      <li onclick="alert('Ajuda')">Ajuda</li>
+    </ul>
+  </div>
+
+  <div class="overlay" id="overlay" onclick="toggleMenu()"></div>
+
+  <script>
+    function toggleMenu() {
+      const sidebar = document.getElementById('sidebar');
+      const overlay = document.getElementById('overlay');
+      sidebar.classList.toggle('open');
+      overlay.classList.toggle('active');
+    }
+  </script>
+
+</body>
+</html>
