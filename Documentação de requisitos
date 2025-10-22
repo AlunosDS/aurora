@@ -5,26 +5,35 @@ REQUISITOS FUNCIONAIS (RF)
 Descrição: O sistema deve permitir que usuários cadastrados façam login usando e-mail e senha
 Prioridade: Alta
 Entrada: E-mail válido e senha
-Processamento: Validar credenciais no banco de dados
-Saída: Acesso ao sistema ou mensagem de erro
-Regras de Negócio:
-
+Processamento: O sistema deve validar as credencias fornecidas comparando com os dados armazenados no banco de dados do usuarios 
+Saída: Se as credencias forem validas; redirecionar o usuario para a pagina inical 
+       Se invalidas; exibir a mensagem de erro como "Email ou senha incorretos"
+Regras de Negócio: A senha deve ter no minimo 8 caracteres
+                   À pos 3 tentavivas falhas de login, o acesso deve ser bloqueado por 5 minutos 
+                   O campo de senha deve ser criptografado no banco de dados 
+                   
 Atores: Usuário registrados
 
 [RF-002] Tela inicial após o login 
 
-Descrição: O sistema deve conter imagens e um breve texto apos fazer o login 
+Descrição: O sistema deve conter um banner de boas-vindas, imagem ilustrativa, e um breve texto sobre os serviços oferecidos 
 Prioridade: Alta
-Entrada: 
-Processamento: Carregar o texto e as imagens
-Saída: Acesso ao sistema ou mensagem de erro
-Regras de Negócio:
+Entrada: Nehuma entrada de úsuario é obrigatoria para carregar os serviços. Os dados serao carregados automaticamente apos o login 
+Processamento: O sistema deve buscar no banco de dados os serviços oferecidos 
+Saída: Exibição na tela: nomes dos serviços
+                         imagens ilustradivas
+                         descriçao breve sobre os serviços
+Regras de Negócio: Os serviços devem carregar dinamicamente (sem necessidade de recarregar a pagina inteira)
+                   Os serviços devem estar organizados por categorias 
 
-[RF-003] Tela de serviços 
+[RF-003] Menu lateral 
 
-Descrição: O sistema deve conter imagens e um breve texto sobre os serviços oferecidos 
+Descrição: O sistema dve exibir um menu laeral fixo com opcoes de navegaçao para as pricipais paginas, acessivel apos o logi do usuario 
 Prioridade: Alta
-Entrada: 
-Processamento: Carregar o texto e as imagens
-Saída: Acesso ao sistema ou mensagem de erro
-Regras de Negócio:
+Entrada: Açao do usuario (clique em uma das opcoes do menu)
+Processamento: O sistema deve indentifcar a opcao clicada e redirecionar o usuario para a pagina correspondente
+Saída: Redirecionamento para: Pagina Inical 
+                              Pagina de serviços
+Regras de Negócio: Deve ficar visivel em todas as paginas internas, exeto o login 
+                   O menu deve ter icones e nomes claros para cada item
+                   O item correspondendo a pagina atual deve ser destacado (sublinhadoo o negrito)
