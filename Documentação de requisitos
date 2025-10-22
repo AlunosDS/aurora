@@ -10,3 +10,21 @@ Saída: Acesso ao sistema ou mensagem de erro
 Regras de Negócio:
 
 Atores: Usuário registrados
+
+[RF-002] Tela inicial após o login 
+
+Descrição: O sistema deve conter imagens e um breve texto apos fazer o login 
+Prioridade: Alta
+Entrada: 
+Processamento: Carregar o texto e as imagens
+Saída: Acesso ao sistema ou mensagem de erro
+Regras de Negócio:
+
+[RF-003] Tela de serviços 
+
+Descrição: O sistema deve conter imagens e um breve texto sobre os serviços oferecidos 
+Prioridade: Alta
+Entrada: 
+Processamento: Carregar o texto e as imagens
+Saída: Acesso ao sistema ou mensagem de erro
+Regras de Negócio:
