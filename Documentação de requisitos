@@ -1,1 +1,12 @@
+REQUISITOS FUNCIONAIS (RF)
 
+[RF-001] Login de Usuário
+
+Descrição: O sistema deve permitir que usuários cadastrados façam login usando e-mail e senha
+Prioridade: Alta
+Entrada: E-mail válido e senha
+Processamento: Validar credenciais no banco de dados
+Saída: Acesso ao sistema ou mensagem de erro
+Regras de Negócio:
+
+Atores: Usuário registrados
