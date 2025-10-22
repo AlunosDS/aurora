@@ -28,7 +28,7 @@ Regras de Negócio: Os serviços devem carregar dinamicamente (sem necessidade d
 
 [RF-003] Menu lateral 
 
-Descrição: O sistema dve exibir um menu laeral fixo com opcoes de navegaçao para as pricipais paginas, acessivel apos o logi do usuario 
+Descrição: O sistema dve exibir um menu laeral fixo com opcoes de navegaçao para as pricipais paginas, acessivel apos o login do usuario 
 Prioridade: Alta
 Entrada: Açao do usuario (clique em uma das opcoes do menu)
 Processamento: O sistema deve indentifcar a opcao clicada e redirecionar o usuario para a pagina correspondente
@@ -36,4 +36,4 @@ Saída: Redirecionamento para: Pagina Inical
                               Pagina de serviços
 Regras de Negócio: Deve ficar visivel em todas as paginas internas, exeto o login 
                    O menu deve ter icones e nomes claros para cada item
-                   O item correspondendo a pagina atual deve ser destacado (sublinhadoo o negrito)
+                   O item correspondendo a pagina atual deve ser destacado (sublinhadoo ou negrito)
