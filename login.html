@@ -1,82 +1,249 @@
-OCTYPE html>
-<html lang="pt-br">
+<!doctype html>
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <title>Login Fofo</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Aurora — Login e Cadastro</title>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
-    body {
+    :root{
+      --bg: #fff7fa;
+      --accent: #ffeef4;
+      --accent-2: #f3e8ff;
+      --primary: #f08ab1;
+      --muted: #b992a1;
+      font-family: 'Quicksand', system-ui, sans-serif;
+      --radius: 18px;
+    }
+
+    html, body {
+      height: 100%;
       margin: 0;
-      padding: 0;
-      font-family: 'Comic Sans MS', cursive, sans-serif;
-      background: linear-gradient(to right, #ffc1e3, #ffe4f2);
+      background: linear-gradient(180deg, var(--bg), #fff9fb);
+      color: #4b3d44;
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
+      -webkit-font-smoothing: antialiased;
     }
 
-    .login-container {
-      background-color: #fff0f5;
-      padding: 40px;
-      border-radius: 20px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    .container {
+      background: var(--accent);
+      border-radius: var(--radius);
+      box-shadow: 0 8px 22px rgba(240, 138, 177, 0.1);
+      padding: 50px;
+      width: 420px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.4s ease;
+      gap: 16px;
+    }
+
+    h1 {
+      font-size: 30px;
+      margin-bottom: 10px;
       text-align: center;
-      width: 300px;
     }
 
-    .login-container h2 {
+    p {
+      text-align: center;
+      color: var(--muted);
       margin-bottom: 20px;
-      color: #d63384;
     }
 
-    input[type="text"],
-    input[type="password"] {
-      width: 100%;
-      padding: 12px;
-      margin: 10px 0;
-      border: none;
-      border-radius: 10px;
-      background-color: #ffe4f2;
+    label {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 4px;
+      margin-top: 8px;
+      display: block;
+      text-align: center;
     }
 
-    input[type="submit"] {
-      width: 100%;
-      padding: 12px;
-      background-color: #ff69b4;
+    input[type="text"], input[type="email"], input[type="password"] {
+      height: 46px;
+      border-radius: 14px;
+      border: 1px solid #f3dbe6;
+      padding: 10px 14px;
+      margin-bottom: 18px;
+      font-family: inherit;
+      font-size: 15px;
+      outline: none;
+      background: #fffafc;
+      transition: 0.2s;
+      width: 80%;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+    }
+
+    input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 2px rgba(240, 138, 177, 0.2);
+    }
+
+    .btn {
       border: none;
-      border-radius: 10px;
-      color: white;
+      border-radius: 16px;
+      padding: 12px 18px;
       font-size: 16px;
+      font-weight: 600;
       cursor: pointer;
-      transition: background-color 0.3s ease;
+      background: var(--primary);
+      color: white;
+      box-shadow: 0 8px 16px rgba(240, 138, 177, 0.2);
+      margin-top: 8px;
+      transition: 0.2s;
+      letter-spacing: 0.5px;
+      width: 85%;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
     }
 
-    input[type="submit"]:hover {
-      background-color: #ff85c1;
+    .btn:hover {
+      opacity: 0.9;
     }
 
-    .footer {
-      margin-top: 20px;
-      font-size: 12px;
-      color: #c71585;
+    .toggle {
+      background: transparent;
+      border: none;
+      color: var(--primary);
+      font-size: 15px;
+      cursor: pointer;
+      text-decoration: underline;
+      margin-top: 14px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
     }
 
-    .hearts {
-      font-size: 20px;
-      margin-bottom: 15px;
+    .error {
+      color: #c94d6d;
+      font-size: 13px;
+      margin-bottom: 8px;
+      text-align: center;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .spacer {
+      height: 20px;
     }
   </style>
 </head>
 <body>
-  <div class="login-container">
-    <div class="hearts">login</div>
-    <h2>Bem-vinda de volta!</h2>
-    <form action="#" method="post">
-      <input type="text" name="username" placeholder="Seu nome de usuario" required>
-      <input type="password" name="password" placeholder="Sua senha" required>
-      <input type="submit" value="Entrar">
-    </form>
-    <div class="footer">Esqueceu a senha bbzinha? </div>
+  <div class="container" id="formContainer">
+    <h1 id="formTitle">Entrar</h1>
+    <p id="formSubtitle">Acesse sua conta Aurora</p>
+
+    <div id="loginForm">
+      <label for="loginEmail">Gmail</label>
+      <input id="loginEmail" type="email" placeholder="seunome@gmail.com" />
+      <div class="spacer"></div>
+      <label for="loginSenha">Senha</label>
+      <input id="loginSenha" type="password" placeholder="••••••" />
+      <div id="loginError" class="error hidden"></div>
+      <button class="btn" onclick="entrar()">Entrar</button>
+      <div class="spacer"></div>
+      <button class="toggle" onclick="mostrarCadastro()">Criar uma conta</button>
+    </div>
+
+    <div id="cadastroForm" class="hidden">
+      <label for="nomeCompleto">Nome completo</label>
+      <input id="nomeCompleto" type="text" placeholder="Seu nome completo" />
+      <div class="spacer"></div>
+      <label for="gmail">Gmail</label>
+      <input id="gmail" type="email" placeholder="seunome@gmail.com" />
+      <div class="spacer"></div>
+      <label for="usuario">Nome de usuário</label>
+      <input id="usuario" type="text" placeholder="nome_de_usuario" />
+      <div class="spacer"></div>
+      <label for="senha">Senha</label>
+      <input id="senha" type="password" placeholder="••••••" />
+      <div id="senhaError" class="error hidden"></div>
+      <button class="btn" onclick="criarConta()">Criar conta</button>
+      <div class="spacer"></div>
+      <button class="toggle" onclick="mostrarLogin()">Já tenho conta</button>
+    </div>
   </div>
+
+  <script>
+    function validarSenha(pwd) {
+      if (!pwd) return { ok: false, msg: 'Digite uma senha.' };
+      if (pwd.length < 6 || pwd.length > 8) return { ok: false, msg: 'A senha deve ter 6 a 8 caracteres.' };
+      if (!/[A-Z]/.test(pwd)) return { ok: false, msg: 'Inclua pelo menos uma letra maiúscula.' };
+      if (!/[!@#$%^&*(),.?":{}|<>]/.test(pwd)) return { ok: false, msg: 'Inclua pelo menos um caractere especial.' };
+      return { ok: true };
+    }
+
+    function criarConta() {
+      const nome = document.getElementById('nomeCompleto').value.trim();
+      const gmail = document.getElementById('gmail').value.trim();
+      const usuario = document.getElementById('usuario').value.trim();
+      const senha = document.getElementById('senha').value;
+      const senhaError = document.getElementById('senhaError');
+      senhaError.classList.add('hidden');
+
+      if (!gmail.endsWith('@gmail.com')) {
+        senhaError.classList.remove('hidden');
+        senhaError.textContent = 'Use um e-mail que termine com @gmail.com';
+        return;
+      }
+      const check = validarSenha(senha);
+      if (!check.ok) {
+        senhaError.classList.remove('hidden');
+        senhaError.textContent = check.msg;
+        return;
+      }
+
+      if (!nome || !usuario) {
+        senhaError.classList.remove('hidden');
+        senhaError.textContent = 'Preencha todos os campos corretamente';
+        return;
+      }
+
+      alert('Conta criada com sucesso! Bem-vinda à Aurora, ' + nome + '!');
+      mostrarLogin();
+    }
+
+    function entrar() {
+      const email = document.getElementById('loginEmail').value.trim();
+      const senha = document.getElementById('loginSenha').value;
+      const erro = document.getElementById('loginError');
+      erro.classList.add('hidden');
+
+      if (!email.endsWith('@gmail.com')) {
+        erro.classList.remove('hidden');
+        erro.textContent = 'Use um Gmail válido.';
+        return;
+      }
+      if (!senha) {
+        erro.classList.remove('hidden');
+        erro.textContent = 'Digite sua senha.';
+        return;
+      }
+      alert('Login realizado com sucesso (simulação).');
+    }
+
+    function mostrarCadastro() {
+      document.getElementById('loginForm').classList.add('hidden');
+      document.getElementById('cadastroForm').classList.remove('hidden');
+      document.getElementById('formTitle').textContent = 'Criar conta';
+      document.getElementById('formSubtitle').textContent = 'Cadastre-se na Aurora';
+    }
+
+    function mostrarLogin() {
+      document.getElementById('cadastroForm').classList.add('hidden');
+      document.getElementById('loginForm').classList.remove('hidden');
+      document.getElementById('formTitle').textContent = 'Entrar';
+      document.getElementById('formSubtitle').textContent = 'Acesse sua conta Aurora';
+    }
+  </script>
 </body>
 </html>
