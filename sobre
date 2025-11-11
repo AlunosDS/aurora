@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre - Aurora</title>
+    <style>
+        /* Importa uma fonte redonda e moderna */
+        @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap');
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Quicksand', sans-serif;
+            background-color: #f8f5f2;
+            color: #8c7b6e;
+        }
+
+        /* Título principal */
+        h1 {
+            text-align: center;
+            margin-top: 3rem;
+            font-size: 3rem;
+            color: #c5a78d;
+            letter-spacing: 3px;
+        }
+
+        main {
+            max-width: 800px;
+            margin: 3rem auto;
+            padding: 2rem;
+            background-color: #fffaf5;
+            border-radius: 30px;
+            box-shadow: 0 0 15px rgba(197, 167, 141, 0.3);
+        }
+
+        h2 {
+            text-align: center;
+            color: #c5a78d;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+
+        p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            text-align: justify;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1.5rem;
+            color: white;
+            background-color: #8c7b6e;
+            border-top-left-radius: 50px;
+            border-top-right-radius: 50px;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Sobre</h1>
+
+    <main>
+        <h2>Sobre o Aurora</h2>
+        <p>
+            O <strong>Aurora</strong> é um aplicativo de beleza pensado para quem valoriza o autocuidado, o estilo e o bem-estar.
+            Nosso objetivo é tornar o agendamento de serviços de beleza mais fácil, moderno e agradável.
+        </p>
+        <p>
+            No Aurora, você encontra profissionais qualificados para cuidar de cabelo, maquiagem, unhas e muito mais, tudo de forma
+            rápida e acessível. Acreditamos que cada pessoa merece se sentir confiante e iluminada — como o nascer de um novo dia.
+            Assim como a aurora, a vida sempre traz uma nova luz depois da escuridão.
+        </p>
+    </main>
+
+    <footer>
+        &copy; 2025 Aurora • Todos os direitos reservados
+    </footer>
+
+</body>
+</html>
