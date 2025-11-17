@@ -37,3 +37,33 @@ Saída: Redirecionamento para: Pagina Inical
 Regras de Negócio: Deve ficar visivel em todas as paginas internas, exeto o login 
                    O menu deve ter icones e nomes claros para cada item
                    O item correspondendo a pagina atual deve ser destacado (sublinhadoo ou negrito)
+
+
+[RF-004] Página de Serviços
+Descrição: A página de "Serviços" do sistema deve exibir uma lista com as opções de serviços disponíveis para o usuário, permitindo uma navegação fácil e acesso direto aos serviços oferecidos. O layout deve ser claro e organizado.
+
+Prioridade: Alta
+
+Entrada:Ação do usuário: Clique na opção "Serviços".
+
+Processamento:O sistema deve carregar a página de serviços, exibindo as opções de serviços disponíveis.
+O sistema deve identificar o serviço selecionado e redirecionar o usuário para a página do serviço específico.
+
+Saída:Exibição da lista de serviços na página de "Serviços".
+Caso o usuário clique em um serviço, o redirecionamento será feito para a página de detalhes daquele serviço específico.
+
+
+[RF-005] Página de Perfil do Usuário
+Descrição:A página de "Perfil do Usuário" permite que o usuário visualize e edite suas informações pessoais, como nome, e-mail, senha, foto de perfil, etc. A página deve ser clara e funcional, oferecendo uma experiência tranquila para o gerenciamento dos dados pessoais.
+
+Prioridade:Alta
+
+Entrada:Clique na opção "Perfil do Usuário" no menu lateral.
+
+Processamento:O sistema deve carregar os dados do usuário (nome, e-mail, foto, etc.) da base de dados.
+O usuário pode editar suas informações e clicar em "Salvar" para atualizar os dados.
+O sistema deve validar as informações e, caso tudo esteja correto, salvar as alterações no banco de dados.
+
+Saída:Exibição das informações atuais do usuário na página de "Perfil".
+Confirmação de sucesso ao salvar as alterações no perfil.
+
