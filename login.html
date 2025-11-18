@@ -4,367 +4,385 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Aurora — Login e Cadastro</title>
+
+  <!-- Fonte -->
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
-  <style>
-    :root{
-      --bg: #fff7fa;
-      --accent: #ffeef4;
-      --accent-2: #f3e8ff;
-      --primary: #f08ab1;
-      --muted: #b992a1;
-      font-family: 'Quicksand', system-ui, sans-serif;
-      --radius: 18px;
-    }
 
-    html, body {
-      height: 100%;
-      margin: 0;
-      background: linear-gradient(180deg, var(--bg), #fff9fb);
-      color: #4b3d44;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    .container {
-      background: var(--accent);
-      border-radius: var(--radius);
-      box-shadow: 0 8px 22px rgba(240, 138, 177, 0.1);
-      padding: 50px;
-      width: 420px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.4s ease;
-      gap: 16px;
-    }
-
-    h1 {
-      font-size: 30px;
-      margin-bottom: 10px;
-      text-align: center;
-    }
-
-    p {
-      text-align: center;
-      color: var(--muted);
-      margin-bottom: 20px;
-    }
-
-    label {
-      font-size: 14px;
-      color: var(--muted);
-      margin-bottom: 4px;
-      margin-top: 8px;
-      display: block;
-      text-align: center;
-    }
-
-    input[type="text"], input[type="email"], input[type="password"] {
-      height: 46px;
-      border-radius: 14px;
-      border: 1px solid #f3dbe6;
-      padding: 10px 14px;
-      margin-bottom: 18px;
-      font-family: inherit;
-      font-size: 15px;
-      outline: none;
-      background: #fffafc;
-      transition: 0.2s;
-      width: 80%;
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
-      text-align: center;
-    }
-
-    input:focus {
-      border-color: var(--primary);
-      box-shadow: 0 0 0 2px rgba(240, 138, 177, 0.2);
-    }
-
-    .btn {
-      border: none;
-      border-radius: 16px;
-      padding: 12px 18px;
-      font-size: 16px;
-      font-weight: 600;
-      cursor: pointer;
-      background: var(--primary);
-      color: white;
-      box-shadow: 0 8px 16px rgba(240, 138, 177, 0.2);
-      margin-top: 8px;
-      transition: 0.2s;
-      letter-spacing: 0.5px;
-      width: 85%;
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .btn:hover {
-      opacity: 0.9;
-    }
-
-    .toggle {
-      background: transparent;
-      border: none;
-      color: var(--primary);
-      font-size: 15px;
-      cursor: pointer;
-      text-decoration: underline;
-      margin-top: 14px;
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .error {
-      color: #c94d6d;
-      font-size: 13px;
-      margin-bottom: 8px;
-      text-align: center;
-    }
-
-    .hidden {
-      display: none;
-    }
-
-    .spacer {
-      height: 20px;
-    }
-
-    .timer {
-      font-size: 14px;
-      color: var(--primary);
-      text-align: center;
-      margin-top: 8px;
-    }
-  </style>
+  <!-- CSS Externo -->
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
+
   <div class="container" id="formContainer">
     <h1 id="formTitle">Entrar</h1>
     <p id="formSubtitle">Acesse sua conta Aurora</p>
 
+    <!-- LOGIN -->
     <div id="loginForm">
       <label for="loginEmail">Gmail</label>
       <input id="loginEmail" type="email" placeholder="seunome@gmail.com" />
       <div class="spacer"></div>
+
       <label for="loginSenha">Senha</label>
       <input id="loginSenha" type="password" placeholder="••••••" />
+
       <div id="loginError" class="error hidden"></div>
       <div id="loginTimer" class="timer hidden"></div>
+
       <button class="btn" id="btnEntrar" onclick="entrar()">Entrar</button>
       <div class="spacer"></div>
+
       <button class="toggle" onclick="mostrarCadastro()">Criar uma conta</button>
     </div>
 
+    <!-- CADASTRO -->
     <div id="cadastroForm" class="hidden">
       <label for="nomeCompleto">Nome completo</label>
       <input id="nomeCompleto" type="text" placeholder="Seu nome completo" />
       <div class="spacer"></div>
+
       <label for="gmail">Gmail</label>
       <input id="gmail" type="email" placeholder="seunome@gmail.com" />
       <div class="spacer"></div>
+
       <label for="usuario">Nome de usuário</label>
       <input id="usuario" type="text" placeholder="nome_de_usuario" />
       <div class="spacer"></div>
+
       <label for="senha">Senha</label>
       <input id="senha" type="password" placeholder="••••••" />
+
       <div id="senhaError" class="error hidden"></div>
+
       <button class="btn" onclick="criarConta()">Criar conta</button>
       <div class="spacer"></div>
+
       <button class="toggle" onclick="mostrarLogin()">Já tenho conta</button>
     </div>
   </div>
 
-  <script>
-    const MAX_TENTATIVAS = 3;
-    const BLOQUEIO_MS = 5 * 60 * 1000; // 5 minutos
+  <!-- JS Externo -->
+  <script src="script.js"></script>
 
-    let timerInterval = null;
-
-    // ===== Validação de senha =====
-    function validarSenha(pwd) {
-      if (!pwd) return { ok: false, msg: 'Digite uma senha.' };
-      if (pwd.length < 6 || pwd.length > 8) return { ok: false, msg: 'A senha deve ter 6 a 8 caracteres.' };
-      if (!/[A-Z]/.test(pwd)) return { ok: false, msg: 'Inclua pelo menos uma letra maiúscula.' };
-      if (!/[!@#$%^&*(),.?":{}|<>]/.test(pwd)) return { ok: false, msg: 'Inclua pelo menos um caractere especial.' };
-      return { ok: true };
-    }
-
-    // ===== Cadastro =====
-    function criarConta() {
-      const nome = document.getElementById('nomeCompleto').value.trim();
-      const gmail = document.getElementById('gmail').value.trim();
-      const usuario = document.getElementById('usuario').value.trim();
-      const senha = document.getElementById('senha').value;
-      const senhaError = document.getElementById('senhaError');
-      senhaError.classList.add('hidden');
-
-      if (!gmail.endsWith('@gmail.com')) {
-        senhaError.classList.remove('hidden');
-        senhaError.textContent = 'Use um e-mail que termine com @gmail.com';
-        return;
-      }
-      const check = validarSenha(senha);
-      if (!check.ok) {
-        senhaError.classList.remove('hidden');
-        senhaError.textContent = check.msg;
-        return;
-      }
-
-      if (!nome || !usuario) {
-        senhaError.classList.remove('hidden');
-        senhaError.textContent = 'Preencha todos os campos corretamente';
-        return;
-      }
-
-      // Armazena no localStorage
-      localStorage.setItem('auroraEmail', gmail);
-      localStorage.setItem('auroraSenha', senha);
-
-      alert('Conta criada com sucesso! Bem-vinda à Aurora, ' + nome + '!');
-      mostrarLogin();
-    }
-
-    // ===== Login com bloqueio =====
-    function entrar() {
-      const email = document.getElementById('loginEmail').value.trim();
-      const senha = document.getElementById('loginSenha').value;
-      const erro = document.getElementById('loginError');
-      const timer = document.getElementById('loginTimer');
-      const btn = document.getElementById('btnEntrar');
-      erro.classList.add('hidden');
-      timer.classList.add('hidden');
-
-      const bloqueioAte = localStorage.getItem('auroraBloqueio');
-      const agora = Date.now();
-
-      // Verifica se ainda está bloqueado
-      if (bloqueioAte && agora < parseInt(bloqueioAte)) {
-        iniciarContagem(parseInt(bloqueioAte));
-        erro.classList.remove('hidden');
-        erro.textContent = 'Conta bloqueada. Aguarde o tempo acabar.';
-        btn.disabled = true;
-        return;
-      }
-
-      // Limpa bloqueio se expirou
-      if (bloqueioAte && agora > parseInt(bloqueioAte)) {
-        localStorage.removeItem('auroraBloqueio');
-        localStorage.removeItem('auroraTentativas');
-        btn.disabled = false;
-      }
-
-      if (!email.endsWith('@gmail.com')) {
-        erro.classList.remove('hidden');
-        erro.textContent = 'Use um Gmail válido.';
-        registrarTentativa();
-        return;
-      }
-      if (!senha) {
-        erro.classList.remove('hidden');
-        erro.textContent = 'Digite sua senha.';
-        registrarTentativa();
-        return;
-      }
-
-      const emailSalvo = localStorage.getItem('auroraEmail');
-      const senhaSalva = localStorage.getItem('auroraSenha');
-
-      if (email === emailSalvo && senha === senhaSalva) {
-        alert('Login realizado com sucesso!');
-        localStorage.removeItem('auroraTentativas');
-        localStorage.removeItem('auroraBloqueio');
-        btn.disabled = false;
-      } else {
-        erro.classList.remove('hidden');
-        erro.textContent = 'E-mail ou senha incorretos.';
-        registrarTentativa();
-      }
-    }
-
-    function registrarTentativa() {
-      let tentativas = parseInt(localStorage.getItem('auroraTentativas')) || 0;
-      tentativas++;
-      localStorage.setItem('auroraTentativas', tentativas);
-
-      if (tentativas >= MAX_TENTATIVAS) {
-        const bloqueioAte = Date.now() + BLOQUEIO_MS;
-        localStorage.setItem('auroraBloqueio', bloqueioAte);
-        localStorage.removeItem('auroraTentativas');
-        const erro = document.getElementById('loginError');
-        erro.classList.remove('hidden');
-        erro.textContent = 'Você excedeu o número de tentativas. Bloqueado por 5 minutos.';
-        document.getElementById('btnEntrar').disabled = true;
-        iniciarContagem(bloqueioAte);
-      }
-    }
-
-    // ===== Timer de bloqueio =====
-    function iniciarContagem(fim) {
-      const timer = document.getElementById('loginTimer');
-      const btn = document.getElementById('btnEntrar');
-      timer.classList.remove('hidden');
-
-      if (timerInterval) clearInterval(timerInterval);
-
-      function atualizar() {
-        const agora = Date.now();
-        const restante = fim - agora;
-        if (restante <= 0) {
-          clearInterval(timerInterval);
-          timer.textContent = '';
-          timer.classList.add('hidden');
-          btn.disabled = false;
-          localStorage.removeItem('auroraBloqueio');
-          return;
-        }
-
-        const minutos = Math.floor(restante / 60000);
-        const segundos = Math.floor((restante % 60000) / 1000);
-        timer.textContent = `Tente novamente em ${String(minutos).padStart(2, '0')}:${String(segundos).padStart(2, '0')}`;
-      }
-
-      atualizar();
-      timerInterval = setInterval(atualizar, 1000);
-    }
-
-    // ===== Alternar telas =====
-    function mostrarCadastro() {
-      document.getElementById('loginForm').classList.add('hidden');
-      document.getElementById('cadastroForm').classList.remove('hidden');
-      document.getElementById('formTitle').textContent = 'Criar conta';
-      document.getElementById('formSubtitle').textContent = 'Cadastre-se na Aurora';
-    }
-
-    function mostrarLogin() {
-      document.getElementById('cadastroForm').classList.add('hidden');
-      document.getElementById('loginForm').classList.remove('hidden');
-      document.getElementById('formTitle').textContent = 'Entrar';
-      document.getElementById('formSubtitle').textContent = 'Acesse sua conta Aurora';
-
-      // Ao voltar para o login, se ainda estiver bloqueado, exibe o contador
-      const bloqueioAte = localStorage.getItem('auroraBloqueio');
-      if (bloqueioAte && Date.now() < parseInt(bloqueioAte)) {
-        document.getElementById('btnEntrar').disabled = true;
-        iniciarContagem(parseInt(bloqueioAte));
-      }
-    }
-
-    // Verifica bloqueio ao carregar
-    window.onload = () => {
-      const bloqueioAte = localStorage.getItem('auroraBloqueio');
-      if (bloqueioAte && Date.now() < parseInt(bloqueioAte)) {
-        document.getElementById('btnEntrar').disabled = true;
-        iniciarContagem(parseInt(bloqueioAte));
-      }
-    };
-  </script>
 </body>
 </html>
 
+:root{
+  --bg: #fff7fa;
+  --accent: #ffeef4;
+  --accent-2: #f3e8ff;
+  --primary: #f08ab1;
+  --muted: #b992a1;
+  font-family: 'Quicksand', system-ui, sans-serif;
+  --radius: 18px;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  background: linear-gradient(180deg, var(--bg), #fff9fb);
+  color: #4b3d44;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  -webkit-font-smoothing: antialiased;
+}
+
+.container {
+  background: var(--accent);
+  border-radius: var(--radius);
+  box-shadow: 0 8px 22px rgba(240, 138, 177, 0.1);
+  padding: 50px;
+  width: 420px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.4s ease;
+  gap: 16px;
+}
+
+h1 {
+  font-size: 30px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+p {
+  text-align: center;
+  color: var(--muted);
+  margin-bottom: 20px;
+}
+
+label {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 4px;
+  margin-top: 8px;
+  display: block;
+  text-align: center;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  height: 46px;
+  border-radius: 14px;
+  border: 1px solid #f3dbe6;
+  padding: 10px 14px;
+  margin-bottom: 18px;
+  font-family: inherit;
+  font-size: 15px;
+  outline: none;
+  background: #fffafc;
+  transition: 0.2s;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px rgba(240, 138, 177, 0.2);
+}
+
+.btn {
+  border: none;
+  border-radius: 16px;
+  padding: 12px 18px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  background: var(--primary);
+  color: white;
+  box-shadow: 0 8px 16px rgba(240, 138, 177, 0.2);
+  margin-top: 8px;
+  transition: 0.2s;
+  letter-spacing: 0.5px;
+  width: 85%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.btn:hover {
+  opacity: 0.9;
+}
+
+.toggle {
+  background: transparent;
+  border: none;
+  color: var(--primary);
+  font-size: 15px;
+  cursor: pointer;
+  text-decoration: underline;
+  margin-top: 14px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.error {
+  color: #c94d6d;
+  font-size: 13px;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.hidden {
+  display: none;
+}
+
+.spacer {
+  height: 20px;
+}
+
+.timer {
+  font-size: 14px;
+  color: var(--primary);
+  text-align: center;
+  margin-top: 8px;
+}
+
+const MAX_TENTATIVAS = 3;
+const BLOQUEIO_MS = 5 * 60 * 1000; // 5 minutos
+
+let timerInterval = null;
+
+// ===== Validação de senha =====
+function validarSenha(pwd) {
+  if (!pwd) return { ok: false, msg: 'Digite uma senha.' };
+  if (pwd.length < 6 || pwd.length > 8) return { ok: false, msg: 'A senha deve ter 6 a 8 caracteres.' };
+  if (!/[A-Z]/.test(pwd)) return { ok: false, msg: 'Inclua pelo menos uma letra maiúscula.' };
+  if (!/[!@#$%^&*(),.?":{}|<>]/.test(pwd)) return { ok: false, msg: 'Inclua pelo menos um caractere especial.' };
+  return { ok: true };
+}
+
+// ===== Cadastro =====
+function criarConta() {
+  const nome = document.getElementById('nomeCompleto').value.trim();
+  const gmail = document.getElementById('gmail').value.trim();
+  const usuario = document.getElementById('usuario').value.trim();
+  const senha = document.getElementById('senha').value;
+  const senhaError = document.getElementById('senhaError');
+  senhaError.classList.add('hidden');
+
+  if (!gmail.endsWith('@gmail.com')) {
+    senhaError.classList.remove('hidden');
+    senhaError.textContent = 'Use um e-mail que termine com @gmail.com';
+    return;
+  }
+
+  const check = validarSenha(senha);
+  if (!check.ok) {
+    senhaError.classList.remove('hidden');
+    senhaError.textContent = check.msg;
+    return;
+  }
+
+  if (!nome || !usuario) {
+    senhaError.classList.remove('hidden');
+    senhaError.textContent = 'Preencha todos os campos corretamente';
+    return;
+  }
+
+  localStorage.setItem('auroraEmail', gmail);
+  localStorage.setItem('auroraSenha', senha);
+
+  alert('Conta criada com sucesso! Bem-vinda à Aurora, ' + nome + '!');
+  mostrarLogin();
+}
+
+// ===== Login com bloqueio =====
+function entrar() {
+  const email = document.getElementById('loginEmail').value.trim();
+  const senha = document.getElementById('loginSenha').value;
+  const erro = document.getElementById('loginError');
+  const timer = document.getElementById('loginTimer');
+  const btn = document.getElementById('btnEntrar');
+  erro.classList.add('hidden');
+  timer.classList.add('hidden');
+
+  const bloqueioAte = localStorage.getItem('auroraBloqueio');
+  const agora = Date.now();
+
+  if (bloqueioAte && agora < parseInt(bloqueioAte)) {
+    iniciarContagem(parseInt(bloqueioAte));
+    erro.classList.remove('hidden');
+    erro.textContent = 'Conta bloqueada. Aguarde o tempo acabar.';
+    btn.disabled = true;
+    return;
+  }
+
+  if (bloqueioAte && agora > parseInt(bloqueioAte)) {
+    localStorage.removeItem('auroraBloqueio');
+    localStorage.removeItem('auroraTentativas');
+    btn.disabled = false;
+  }
+
+  if (!email.endsWith('@gmail.com')) {
+    erro.classList.remove('hidden');
+    erro.textContent = 'Use um Gmail válido.';
+    registrarTentativa();
+    return;
+  }
+
+  if (!senha) {
+    erro.classList.remove('hidden');
+    erro.textContent = 'Digite sua senha.';
+    registrarTentativa();
+    return;
+  }
+
+  const emailSalvo = localStorage.getItem('auroraEmail');
+  const senhaSalva = localStorage.getItem('auroraSenha');
+
+  if (email === emailSalvo && senha === senhaSalva) {
+    alert('Login realizado com sucesso!');
+    localStorage.removeItem('auroraTentativas');
+    localStorage.removeItem('auroraBloqueio');
+    btn.disabled = false;
+  } else {
+    erro.classList.remove('hidden');
+    erro.textContent = 'E-mail ou senha incorretos.';
+    registrarTentativa();
+  }
+}
+
+function registrarTentativa() {
+  let tentativas = parseInt(localStorage.getItem('auroraTentativas')) || 0;
+  tentativas++;
+  localStorage.setItem('auroraTentativas', tentativas);
+
+  if (tentativas >= MAX_TENTATIVAS) {
+    const bloqueioAte = Date.now() + BLOQUEIO_MS;
+    localStorage.setItem('auroraBloqueio', bloqueioAte);
+    localStorage.removeItem('auroraTentativas');
+
+    const erro = document.getElementById('loginError');
+    erro.classList.remove('hidden');
+    erro.textContent = 'Você excedeu o número de tentativas. Bloqueado por 5 minutos.';
+
+    document.getElementById('btnEntrar').disabled = true;
+    iniciarContagem(bloqueioAte);
+  }
+}
+
+// ===== Timer bloqueio =====
+function iniciarContagem(fim) {
+  const timer = document.getElementById('loginTimer');
+  const btn = document.getElementById('btnEntrar');
+  timer.classList.remove('hidden');
+
+  if (timerInterval) clearInterval(timerInterval);
+
+  function atualizar() {
+    const agora = Date.now();
+    const restante = fim - agora;
+
+    if (restante <= 0) {
+      clearInterval(timerInterval);
+      timer.textContent = '';
+      timer.classList.add('hidden');
+      btn.disabled = false;
+      localStorage.removeItem('auroraBloqueio');
+      return;
+    }
+
+    const minutos = Math.floor(restante / 60000);
+    const segundos = Math.floor((restante % 60000) / 1000);
+    timer.textContent = `Tente novamente em ${String(minutos).padStart(2,'0')}:${String(segundos).padStart(2,'0')}`;
+  }
+
+  atualizar();
+  timerInterval = setInterval(atualizar, 1000);
+}
+
+// ===== Alternar telas =====
+function mostrarCadastro() {
+  document.getElementById('loginForm').classList.add('hidden');
+  document.getElementById('cadastroForm').classList.remove('hidden');
+  document.getElementById('formTitle').textContent = 'Criar conta';
+  document.getElementById('formSubtitle').textContent = 'Cadastre-se na Aurora';
+}
+
+function mostrarLogin() {
+  document.getElementById('cadastroForm').classList.add('hidden');
+  document.getElementById('loginForm').classList.remove('hidden');
+  document.getElementById('formTitle').textContent = 'Entrar';
+  document.getElementById('formSubtitle').textContent = 'Acesse sua conta Aurora';
+
+  const bloqueioAte = localStorage.getItem('auroraBloqueio');
+  if (bloqueioAte && Date.now() < parseInt(bloqueioAte)) {
+    document.getElementById('btnEntrar').disabled = true;
+    iniciarContagem(parseInt(bloqueioAte));
+  }
+}
+
+window.onload = () => {
+  const bloqueioAte = localStorage.getItem('auroraBloqueio');
+  if (bloqueioAte && Date.now() < parseInt(bloqueioAte)) {
+    document.getElementById('btnEntrar').disabled = true;
+    iniciarContagem(parseInt(bloqueioAte));
+  }
+};
