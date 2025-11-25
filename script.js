@@ -6,6 +6,11 @@ function toggleMenu() {
   if (!sidebar) return;
   const isOpen = sidebar.classList.toggle('open');
   if (overlay) overlay.classList.toggle('active', isOpen);
+  // Update aria-expanded on menu-toggle buttons
+  const toggles = document.querySelectorAll('.menu-toggle');
+  toggles.forEach(btn => btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false'));
+  if (sidebar) sidebar.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
+  if (overlay) overlay.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
 }
 
 // Close sidebar when clicking overlay
@@ -26,6 +31,9 @@ window.addEventListener('keydown', (e) => {
     const overlay = document.getElementById('overlay');
     if (sidebar) sidebar.classList.remove('open');
     if (overlay) overlay.classList.remove('active');
+    // hide modal if open
+    const modal = document.getElementById('helpModal');
+    if (modal && modal.style.display !== 'none') hideHelpForm();
   }
 });
 
@@ -33,7 +41,9 @@ window.addEventListener('keydown', (e) => {
 function showHelpForm() {
   const modal = document.getElementById('helpModal');
   if (!modal) return;
+  // show modal and mark accessible state
   modal.style.display = 'flex';
+  modal.removeAttribute('aria-hidden');
   const name = document.getElementById('helpName');
   const desc = document.getElementById('helpDescription');
   if (name) name.value = '';
@@ -46,12 +56,22 @@ function showHelpForm() {
   if (share) share.checked = false;
   const status = document.getElementById('locationStatus');
   if (status) status.textContent = 'Nenhuma localização';
+  // Focus management
+  const first = modal.querySelector('input, textarea, button');
+  if (first) {
+    modal._previousActive = document.activeElement;
+    first.focus();
+  }
+  trapFocus(modal);
 }
 
 function hideHelpForm() {
   const modal = document.getElementById('helpModal');
   if (!modal) return;
   modal.style.display = 'none';
+  modal.setAttribute('aria-hidden', 'true');
+  releaseFocusTrap(modal);
+  try { if (modal._previousActive) modal._previousActive.focus(); } catch(e) {}
 }
 
 function addHelpFormHandlers() {
@@ -115,7 +135,51 @@ function submitHelpForm() {
   hideHelpForm();
 }
 
+// Focus trapping utilities for modal dialogs
+function trapFocus(modal) {
+  if (!modal) return;
+  const focusable = modal.querySelectorAll('a[href], area[href], input:not([disabled]), textarea:not([disabled]), button:not([disabled]), [tabindex]:not([tabindex="-1"])');
+  if (!focusable.length) return;
+  const first = focusable[0];
+  const last = focusable[focusable.length - 1];
+  function handle(e){
+    if (e.key !== 'Tab') return;
+    if (e.shiftKey) {
+      if (document.activeElement === first) { e.preventDefault(); last.focus(); }
+    } else {
+      if (document.activeElement === last) { e.preventDefault(); first.focus(); }
+    }
+  }
+  modal._focusTrapHandler = handle;
+  modal.addEventListener('keydown', handle);
+}
+
+function releaseFocusTrap(modal){
+  if (!modal) return;
+  const h = modal._focusTrapHandler;
+  if (h) modal.removeEventListener('keydown', h);
+  modal._focusTrapHandler = null;
+}
+
 // Initialize handlers when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
-  addHelpFormHandlers();
+  loadMenuFragment().then(() => {
+    addHelpFormHandlers();
+  }).catch(() => {
+    addHelpFormHandlers();
+  });
 });
+
+// Load menu fragment into pages that have #menu-root (inserts sidebar, overlay and help modal)
+async function loadMenuFragment(){
+  const root = document.getElementById('menu-root');
+  if (!root) return;
+  try{
+    const res = await fetch('/menu-fragment.html');
+    if (!res.ok) throw new Error('Failed to fetch menu fragment');
+    const html = await res.text();
+    root.innerHTML = html;
+    // after inserting, we rebind overlay/close events
+    addHelpFormHandlers();
+  } catch(err){ console.error('menu fragment load failed', err); }
+}

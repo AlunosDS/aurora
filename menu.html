@@ -97,19 +97,9 @@
 </head>
 <body>
 
-  <button class="menu-toggle" onclick="toggleMenu()">☰ Menu</button>
+  <button class="menu-toggle" onclick="toggleMenu()" aria-expanded="false" aria-controls="sidebar">☰ Menu</button>
 
-  <div class="sidebar" id="sidebar">
-    <h2>Menu</h2>
-    <ul>
-      <li><a href="perfil.html">Perfil</a></li>
-      <li><a href="servicos.html">Serviços</a></li>
-      <li><a href="agendamento.html">Agendar</a></li>
-      <li><a href="sobre.html">Sobre</a></li>
-      <li><a href="login.html">Entrar</a></li>
-      <li><a href="#" onclick="showHelpForm()">Ajuda</a></li>
-    </ul>
-  </div>
+  <div id="menu-root"></div>
 
   <div class="overlay" id="overlay" onclick="toggleMenu()"></div>
 
@@ -124,26 +114,26 @@
 
 </body>
   <!-- ===== HELP FORM MODAL ===== -->
-  <div id="helpModal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.4); z-index:2000; align-items:center; justify-content:center;">
-    <div style="background:#fff; width:90%; max-width:520px; padding:20px; border-radius:12px; box-shadow:0 8px 30px rgba(0,0,0,0.2); position:relative;">
-      <button id="closeHelpModal" style="position:absolute; right:12px; top:12px; border:none; background:transparent; font-size:20px; cursor:pointer;">✕</button>
-      <h3 style="margin-top:0; color:#5e5047;">Ajuda</h3>
-      <p style="color:#666;">Preencha o formulário abaixo e envie. Você pode compartilhar sua localização para facilitar nossa resposta.</p>
-      <form id="helpForm" style="display:flex; flex-direction:column; gap:12px; margin-top:8px;">
-        <label style="font-weight:600; color:#5e5047;">Nome (opcional)</label>
-        <input id="helpName" type="text" placeholder="Seu nome (opcional)" style="padding:12px; border-radius:8px; border:1px solid #eae4e0;" />
-        <label style="font-weight:600; color:#5e5047;">Descrição</label>
-        <textarea id="helpDescription" placeholder="Descreva seu problema ou dúvida" style="padding:12px; border-radius:8px; border:1px solid #eae4e0; min-height:100px;" required></textarea>
-        <div style="display:flex; gap:10px; align-items:center;">
+  <div id="helpModal" class="help-modal" role="dialog" aria-modal="true" aria-labelledby="helpTitle" aria-describedby="helpDesc">
+    <div class="dialog">
+      <button id="closeHelpModal" class="close-btn" aria-label="Fechar">✕</button>
+      <h3 id="helpTitle">Ajuda</h3>
+      <p id="helpDesc">Preencha o formulário abaixo e envie. Você pode compartilhar sua localização para facilitar nossa resposta.</p>
+      <form id="helpForm" class="help-form" novalidate>
+        <label>Nome (opcional)</label>
+        <input id="helpName" type="text" class="form-input" placeholder="Seu nome (opcional)" />
+        <label>Descrição</label>
+        <textarea id="helpDescription" class="form-textarea" placeholder="Descreva seu problema ou dúvida" required></textarea>
+        <div class="form-row">
           <input id="shareLocation" type="checkbox" />
           <label for="shareLocation">Compartilhar localização</label>
-          <small id="locationStatus" style="color:#666; margin-left:auto;">Nenhuma localização</small>
+          <small id="locationStatus">Nenhuma localização</small>
         </div>
         <input id="helpLat" type="hidden" />
         <input id="helpLng" type="hidden" />
-        <div style="display:flex; gap:10px; justify-content:flex-end; margin-top:8px;">
-          <button type="button" onclick="submitHelpForm()" style="background:#c5a78d; color:white; padding:10px 16px; border-radius:8px; border:none;">Enviar</button>
-          <button type="button" id="cancelHelp" style="background:#f3f0ee; border:none; padding:10px 16px; border-radius:8px;">Cancelar</button>
+        <div class="form-row end">
+          <button type="button" onclick="submitHelpForm()" class="primary">Enviar</button>
+          <button type="button" id="cancelHelp" class="secondary">Cancelar</button>
         </div>
       </form>
     </div>

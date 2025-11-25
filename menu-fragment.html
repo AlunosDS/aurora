@@ -1,0 +1,39 @@
+<!-- menu-fragment.html — sidebar + overlay + help modal fragment -->
+<div class="sidebar" id="sidebar" role="navigation" aria-label="Menu lateral" aria-hidden="true">
+  <h2>Menu</h2>
+  <ul>
+    <li><a href="perfil.html">Perfil</a></li>
+    <li><a href="servicos.html">Serviços</a></li>
+    <li><a href="agendamento.html">Agendar</a></li>
+    <li><a href="sobre.html">Sobre</a></li>
+    <li><a href="login.html">Entrar</a></li>
+    <li><a href="#" onclick="showHelpForm()">Ajuda</a></li>
+  </ul>
+</div>
+<div class="overlay" id="overlay" onclick="toggleMenu()" aria-hidden="true"></div>
+
+<!-- Help modal (moved here so it can be loaded in pages) -->
+<div id="helpModal" class="help-modal" role="dialog" aria-modal="true" aria-labelledby="helpTitle" aria-describedby="helpDesc">
+  <div class="dialog">
+    <button id="closeHelpModal" class="close-btn" aria-label="Fechar">✕</button>
+    <h3 id="helpTitle">Ajuda</h3>
+    <p id="helpDesc">Preencha o formulário abaixo e envie. Você pode compartilhar sua localização para facilitar nossa resposta.</p>
+    <form id="helpForm" class="help-form" novalidate>
+      <label>Nome (opcional)</label>
+      <input id="helpName" type="text" class="form-input" placeholder="Seu nome (opcional)" />
+      <label>Descrição</label>
+      <textarea id="helpDescription" class="form-textarea" placeholder="Descreva seu problema ou dúvida" required></textarea>
+      <div class="form-row">
+        <input id="shareLocation" type="checkbox" />
+        <label for="shareLocation">Compartilhar localização</label>
+        <small id="locationStatus">Nenhuma localização</small>
+      </div>
+      <input id="helpLat" type="hidden" />
+      <input id="helpLng" type="hidden" />
+      <div class="form-row end">
+        <button type="button" onclick="submitHelpForm()" class="primary">Enviar</button>
+        <button type="button" id="cancelHelp" class="secondary">Cancelar</button>
+      </div>
+    </form>
+  </div>
+</div>

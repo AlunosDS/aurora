@@ -30,7 +30,7 @@ html,body{ height:100%; margin:0; padding:0; font-family:'Quicksand', system-ui,
 
 /* Top nav */
 .main-nav{ display:flex; gap:18px; align-items:center; }
-.main-nav a{ color:var(--muted); text-decoration:none; font-weight:600; padding:6px 10px; border-radius:9px; }
+.main-nav a{ color:var(--muted); text-decoration:none; font-weight:600; padding:6px 10px; border-radius:9px; margin:0 8px; }
 .main-nav a:hover, .main-nav a.active{ background:var(--accent-soft); color:var(--accent); }
 
 /* Mobile top nav collapse (if present) */
@@ -58,9 +58,20 @@ main{ padding:24px 16px; }
 .overlay{ position:fixed; inset:0; background:rgba(0,0,0,0.35); display:none; z-index:1400; }
 .overlay.active{ display:block; }
 
-/* Forms */nform{ }
+/* Forms */
+form{ }
 input, textarea, button{ font-family:inherit; }
 textarea{ resize:vertical; }
+
+/* Help modal */
+.help-modal{ display:none; position:fixed; inset:0; background:rgba(0,0,0,0.4); z-index:2000; align-items:center; justify-content:center; }
+.help-modal .dialog{ background:#fff; width:90%; max-width:520px; padding:20px; border-radius:12px; box-shadow:0 8px 30px rgba(0,0,0,0.2); position:relative; }
+.help-modal .close-btn{ position:absolute; right:12px; top:12px; border:none; background:transparent; font-size:20px; cursor:pointer; }
+.help-modal .help-form{ display:flex; flex-direction:column; gap:12px; margin-top:8px; }
+.help-modal .form-row{ display:flex; gap:10px; align-items:center; }
+.form-row.end{ justify-content:flex-end; }
+.help-modal .primary{ background:var(--accent); color:#fff; padding:10px 16px; border-radius:8px; border:none; }
+.help-modal .secondary{ background:#f3f0ee; border:none; padding:10px 16px; border-radius:8px; }
 
 /* Footer */
 .site-footer{ padding:20px; text-align:center; color:var(--muted); font-size:.95rem; }
@@ -99,3 +110,16 @@ header nav, .main-nav, .site-header{ align-items:center; }
 
 /* keep important mobile-friendly clickable target size */
 .sidebar li, .main-nav a, button { min-height:36px; }
+
+/* Utility classes */
+.hidden{ display:none; }
+
+/* Back link (login) */
+.back-link{ position:fixed; top:12px; left:12px; z-index:1000; }
+.back-link a{ text-decoration:none; color:var(--accent); font-weight:600; }
+
+/* input helpers */
+.form-input{ padding:12px; border-radius:8px; border:1px solid #eae4e0; background:#fffafc; }
+.form-textarea{ padding:12px; border-radius:8px; border:1px solid #eae4e0; min-height:100px; background:#fffafc; }
+
+.profile-pic{ background-size:cover; background-position:center; }
