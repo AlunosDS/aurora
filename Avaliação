@@ -1,0 +1,9 @@
+Analisei o codigo e os respectivos arquivos e quero pontuar algumas observações:
+- Parabéns pelo arquivo de requisitos pois está minimamente organizado e estruturado. Verifiquem se todo o projeto está sendo documentado.
+- A forma como vocês fizeram os arquivos não é uma pratica recomendada:
+  - Vocês optaram por deixar em um mesmo arquivo os códigos HTML, CSS e JavaScript. Essa prática é mais recomendada quando tenho um código muito especifico e muito curto e que não será utilizado em outro momento.
+  - Por exemplo, vamos supor que vocês tenham um botão de AJUDA que é comum em todas as telas( Login, Serviços, Menu e etc.) para cada arquivo que vocês forem criar uma tela, será necessario criar um novo elemento CSS
+para criar o botão, então se tiver 10 telas, serão 10 códigos de CSS criando o botão.
+  - A pratica mais recomendada é que seja um unico arquivo para estilização(CSS), então no cenario acima eu teria apenas 1 botão criado no meu arquivo CSS sendo usado em 10 telas.
+- Verifiquem a possibilidade de separar os arquivos deixando mais fácil de realizar mudanças.
+Parabéns pelo projeto e tenho certeza que vai servir de inspiração para muitas mulheres procurarem ajuda! <3
