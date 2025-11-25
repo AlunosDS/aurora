@@ -1,0 +1,101 @@
+/* style.css - central stylesheet for Aurora
+   Contains variables, base layout, header/nav, sidebar and responsive rules
+*/
+:root{
+  --bg: #f9f6f2;
+  --paper: #fffafc;
+  --accent: #c5a78d;
+  --accent-soft: #ffe3ec;
+  --text: #333;
+  --muted: #8c7b6e;
+  --radius: 12px;
+  --max-width: 1100px;
+  --nav-height: 64px;
+}
+
+*{ box-sizing: border-box; }
+html,body{ height:100%; margin:0; padding:0; font-family:'Quicksand', system-ui, sans-serif; background:var(--bg); color:var(--text); }
+
+.container{
+  max-width: var(--max-width);
+  margin:0 auto;
+  padding:0 16px;
+}
+
+/* Header */
+.site-header{
+  background:#fff; height:var(--nav-height); display:flex; gap:16px; align-items:center; justify-content:space-between; padding:0 20px; box-shadow: 0 1px 0 rgba(0,0,0,0.03);
+}
+.site-brand{ font-weight:700; color:var(--accent); font-size:1.25rem; letter-spacing:1px; text-decoration:none; }
+
+/* Top nav */
+.main-nav{ display:flex; gap:18px; align-items:center; }
+.main-nav a{ color:var(--muted); text-decoration:none; font-weight:600; padding:6px 10px; border-radius:9px; }
+.main-nav a:hover, .main-nav a.active{ background:var(--accent-soft); color:var(--accent); }
+
+/* Mobile top nav collapse (if present) */
+.nav-collapse{ display:none; }
+.nav-toggle{ display:none; border:none; background:transparent; font-size:1.2rem; cursor:pointer; }
+
+/* HERO */
+.hero{ padding:40px 16px; text-align:center; }
+.hero h2{ color:#5e5047; }
+
+/* Generic page main */
+main{ padding:24px 16px; }
+
+/* Sidebar (right) */
+.menu-toggle{ background:var(--accent); color:#fff; border:none; padding:10px 12px; border-radius:8px; cursor:pointer; }
+.sidebar{ position:fixed; top:0; right:-320px; width:320px; max-width:90%; height:100%; background:#fff; box-shadow:-6px 0 20px rgba(0,0,0,0.12); transition:right .26s ease; z-index:1500; padding:16px; }
+.sidebar.open{ right:0; }
+.sidebar h2{ margin-top:8px; color:var(--muted); }
+.sidebar ul{ list-style:none; padding:0; margin-top:10px; }
+.sidebar li{ padding:12px 10px; border-radius:8px; color:var(--muted); cursor:pointer; }
+.sidebar li a{ color:inherit; text-decoration:none; display:block; }
+.sidebar li:hover{ background:#f6f3ee; color:var(--accent); }
+
+/* Overlay for modals and sidebar */
+.overlay{ position:fixed; inset:0; background:rgba(0,0,0,0.35); display:none; z-index:1400; }
+.overlay.active{ display:block; }
+
+/* Forms */nform{ }
+input, textarea, button{ font-family:inherit; }
+textarea{ resize:vertical; }
+
+/* Footer */
+.site-footer{ padding:20px; text-align:center; color:var(--muted); font-size:.95rem; }
+
+/* Responsive rules */
+@media (max-width: 900px){
+  .main-nav{ gap:8px; }
+}
+@media (max-width: 700px){
+  .main-nav{ display:none; }
+  .nav-toggle{ display:block; }
+  .sidebar{ width:80%; }
+  .hero{ padding:32px 12px; }
+  header h1{ font-size:1.5rem; }
+}
+
+/* Utilities */
+.align-center{ display:flex; align-items:center; justify-content:center; }
+.mt-24{ margin-top:24px; }
+.p-8{ padding:8px; }
+
+/* Accessibility small adjustments */
+.sr-only{ position:absolute; width:1px; height:1px; padding:0; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+
+/* Fix alignment issues sometimes caused by inline style overrides */
+header nav, .main-nav, .site-header{ align-items:center; }
+
+/* Force consistent box sizing for hero/background images */
+.hero img{ max-width:100%; height:auto; display:block; }
+
+/* small fix for sidebar list icons (if any) */
+.sidebar ul li { display:flex; align-items:center; gap:10px; }
+
+/* make sure form inputs are full width within a container */
+.form-row input, .form-row textarea { width:100%; }
+
+/* keep important mobile-friendly clickable target size */
+.sidebar li, .main-nav a, button { min-height:36px; }

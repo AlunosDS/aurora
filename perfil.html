@@ -142,14 +142,19 @@
 </head>
 <body>
 
-  <nav style="text-align:center; padding:12px 0; background:#fff;">
-    <a href="index.html" style="margin:0 8px; text-decoration:none; color:#5e5047;">Início</a>
-    <a href="servicos.html" style="margin:0 8px; text-decoration:none; color:#5e5047;">Serviços</a>
-    <a href="agendamento.html" style="margin:0 8px; text-decoration:none; color:#5e5047;">Agendar</a>
-    <a href="sobre.html" style="margin:0 8px; text-decoration:none; color:#5e5047;">Sobre</a>
-    <a href="perfil.html" style="margin:0 8px; text-decoration:none; color:#5e5047;">Perfil</a>
-    <a href="login.html" style="margin:0 8px; text-decoration:none; color:#5e5047;">Entrar</a>
-  </nav>
+    <link rel="stylesheet" href="style.css">
+    <header class="site-header container">
+      <a class="site-brand" href="index.html">AURORA</a>
+      <nav class="main-nav">
+        <a href="index.html">Início</a>
+        <a href="servicos.html">Serviços</a>
+        <a href="agendamento.html">Agendar</a>
+        <a href="sobre.html">Sobre</a>
+        <a href="perfil.html" class="active">Perfil</a>
+        <a href="login.html">Entrar</a>
+      </nav>
+      <button class="menu-toggle nav-toggle" onclick="toggleMenu()" aria-label="Abrir menu">☰</button>
+    </header>
 
   <div class="profile-header">
     <label for="upload-photo">
@@ -191,6 +196,7 @@
 
   <script>
     const uploadInput = document.getElementById('upload-photo');
+<script src="script.js"></script>
     const profilePic = document.getElementById('profilePic');
     const usernameEl = document.getElementById('username');
 

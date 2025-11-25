@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sobre - Aurora</title>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
     <style>
         /* Importa uma fonte redonda e moderna */
         @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap');
@@ -60,14 +62,17 @@
 </head>
 <body>
 
-        <h1>Sobre</h1>
-        <nav style="text-align:center; margin-top:10px;">
-            <a href="index.html" style="margin:0 8px; text-decoration:none; color:#c5a78d;">Início</a>
-            <a href="servicos.html" style="margin:0 8px; text-decoration:none; color:#c5a78d;">Serviços</a>
-            <a href="agendamento.html" style="margin:0 8px; text-decoration:none; color:#c5a78d;">Agendar</a>
-            <a href="perfil.html" style="margin:0 8px; text-decoration:none; color:#c5a78d;">Perfil</a>
-            <a href="login.html" style="margin:0 8px; text-decoration:none; color:#c5a78d;">Entrar</a>
-        </nav>
+        <header class="site-header container">
+          <a class="site-brand" href="index.html">AURORA</a>
+          <nav class="main-nav">
+            <a href="index.html">Início</a>
+            <a href="servicos.html">Serviços</a>
+            <a href="agendamento.html">Agendar</a>
+            <a href="perfil.html">Perfil</a>
+            <a href="login.html">Entrar</a>
+          </nav>
+          <button class="menu-toggle nav-toggle" onclick="toggleMenu()" aria-label="Abrir menu">☰</button>
+        </header>
         <main>
         <h2>Sobre o Aurora</h2>
         <p>
@@ -86,4 +91,5 @@
     </footer>
 
 </body>
-</html>
+        <script src="script.js"></script>
+    </body>

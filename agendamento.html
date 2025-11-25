@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Agendamento | Aurora</title>
+  <link rel="stylesheet" href="style.css">
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
@@ -297,19 +298,19 @@
   <div class="sidebar" id="sidebar">
     <h2>Menu</h2>
     <ul>
-      <li onclick="alert('Conta')">Conta</li>
-      <li onclick="alert('Mudar de Conta')">Mudar de Conta</li>
-      <li onclick="alert('Acessibilidade')">Acessibilidade</li>
-      <li onclick="alert('Idioma')">Idioma</li>
-      <li onclick="alert('Configurações')">Configurações</li>
-      <li onclick="showHelpForm()">Ajuda</li>
+      <li><a href="#">Conta</a></li>
+      <li><a href="#">Mudar de Conta</a></li>
+      <li><a href="#">Acessibilidade</a></li>
+      <li><a href="#">Idioma</a></li>
+      <li><a href="#">Configurações</a></li>
+      <li><a href="#" onclick="showHelpForm()">Ajuda</a></li>
     </ul>
   </div>
 
   <div class="overlay" id="overlay" onclick="toggleMenu()"></div>
 
   <!-- Conteúdo principal -->
-  <header>
+  <header class="site-header container">
     <div class="story" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQuMV1_8b1pjiHe6lTfRLqUZfOtDOOCGQ4rSA&s');"></div>
     <h1>Unhas em Gel</h1>
     <nav style="text-align:center; margin-top:12px;">
@@ -506,4 +507,5 @@
   </script>
 
 </body>
+<script src="script.js"></script>
 </html>
