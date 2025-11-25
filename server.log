@@ -2,3 +2,10 @@ nohup: ignoring input
 127.0.0.1 - - [25/Nov/2025 11:12:22] "HEAD /index.html HTTP/1.1" 200 -
 127.0.0.1 - - [25/Nov/2025 11:12:22] "HEAD /agendamento.html HTTP/1.1" 200 -
 127.0.0.1 - - [25/Nov/2025 11:12:22] "HEAD /menu.html HTTP/1.1" 200 -
+127.0.0.1 - - [25/Nov/2025 11:12:49] "GET /agendamento.html HTTP/1.1" 200 -
+127.0.0.1 - - [25/Nov/2025 11:12:56] "GET /menu.html HTTP/1.1" 200 -
+127.0.0.1 - - [25/Nov/2025 11:13:18] "GET /agendamento.html HTTP/1.1" 200 -
+127.0.0.1 - - [25/Nov/2025 11:13:24] "GET /agendamento.html HTTP/1.1" 200 -
+127.0.0.1 - - [25/Nov/2025 11:14:08] "GET /agendamento.html HTTP/1.1" 304 -
+127.0.0.1 - - [25/Nov/2025 11:14:10] "GET /index.html HTTP/1.1" 200 -
+127.0.0.1 - - [25/Nov/2025 11:14:42] "GET /agendamento.html HTTP/1.1" 200 -
