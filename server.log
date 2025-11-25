@@ -5,3 +5,6 @@ nohup: ignoring input
 127.0.0.1 - - [25/Nov/2025 11:36:54] "HEAD /index.html HTTP/1.1" 200 -
 127.0.0.1 - - [25/Nov/2025 11:36:54] "HEAD /servicos.html HTTP/1.1" 200 -
 127.0.0.1 - - [25/Nov/2025 11:36:54] "HEAD /agendamento.html HTTP/1.1" 200 -
+127.0.0.1 - - [25/Nov/2025 11:38:31] "GET /agendamento.html HTTP/1.1" 200 -
+127.0.0.1 - - [25/Nov/2025 11:38:33] "GET /style.css HTTP/1.1" 304 -
+127.0.0.1 - - [25/Nov/2025 11:38:33] "GET /script.js HTTP/1.1" 304 -
