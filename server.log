@@ -1,20 +1,4 @@
 nohup: ignoring input
-127.0.0.1 - - [25/Nov/2025 10:37:18] "HEAD / HTTP/1.1" 200 -
-127.0.0.1 - - [25/Nov/2025 10:37:18] "HEAD /login.html HTTP/1.1" 200 -
-127.0.0.1 - - [25/Nov/2025 10:37:18] "HEAD /index.html HTTP/1.1" 200 -
-127.0.0.1 - - [25/Nov/2025 10:37:31] code 404, message File not found
-127.0.0.1 - - [25/Nov/2025 10:37:31] "GET /favicon.ico HTTP/1.1" 404 -
-127.0.0.1 - - [25/Nov/2025 10:37:32] "GET / HTTP/1.1" 200 -
-127.0.0.1 - - [25/Nov/2025 10:48:13] "GET / HTTP/1.1" 200 -
-127.0.0.1 - - [25/Nov/2025 10:48:20] "GET /servicos.html HTTP/1.1" 200 -
-127.0.0.1 - - [25/Nov/2025 10:48:23] "GET /agendamento.html HTTP/1.1" 200 -
-127.0.0.1 - - [25/Nov/2025 10:48:50] "GET /index.html HTTP/1.1" 200 -
-127.0.0.1 - - [25/Nov/2025 10:49:00] "GET /index.html HTTP/1.1" 200 -
-127.0.0.1 - - [25/Nov/2025 10:49:02] "GET /servicos.html HTTP/1.1" 304 -
-127.0.0.1 - - [25/Nov/2025 10:49:06] "GET /sobre.html HTTP/1.1" 200 -
-127.0.0.1 - - [25/Nov/2025 10:49:14] "GET /login.html HTTP/1.1" 200 -
-127.0.0.1 - - [25/Nov/2025 10:49:19] "GET /agendamento.html HTTP/1.1" 304 -
-127.0.0.1 - - [25/Nov/2025 10:49:37] "GET /index.html HTTP/1.1" 304 -
-127.0.0.1 - - [25/Nov/2025 10:49:41] "GET /sobre.html HTTP/1.1" 304 -
-127.0.0.1 - - [25/Nov/2025 10:49:51] "GET /servicos.html HTTP/1.1" 304 -
-127.0.0.1 - - [25/Nov/2025 10:50:09] "GET /index.html HTTP/1.1" 200 -
+127.0.0.1 - - [25/Nov/2025 11:12:22] "HEAD /index.html HTTP/1.1" 200 -
+127.0.0.1 - - [25/Nov/2025 11:12:22] "HEAD /agendamento.html HTTP/1.1" 200 -
+127.0.0.1 - - [25/Nov/2025 11:12:22] "HEAD /menu.html HTTP/1.1" 200 -
