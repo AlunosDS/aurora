@@ -123,3 +123,604 @@ header nav, .main-nav, .site-header{ align-items:center; }
 .form-textarea{ padding:12px; border-radius:8px; border:1px solid #eae4e0; min-height:100px; background:#fffafc; }
 
 .profile-pic{ background-size:cover; background-position:center; }
+
+/* ===== Estilos da página de Login ===== */
+:root{
+  --bg: #fff7fa;
+  --accent: #ffeef4;
+  --accent-2: #f3e8ff;
+  --primary: #f08ab1;
+  --muted: #b992a1;
+  font-family: 'Quicksand', system-ui, sans-serif;
+  --radius: 18px;
+}
+html.login-page, body.login-page {
+  height: 100%;
+  margin: 0;
+  background: linear-gradient(180deg, var(--bg), #fff9fb);
+  color: #4b3d44;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  -webkit-font-smoothing: antialiased;
+}
+.login-container {
+  background: var(--accent);
+  border-radius: var(--radius);
+  box-shadow: 0 8px 22px rgba(240, 138, 177, 0.1);
+  padding: 50px;
+  width: 420px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.4s ease;
+  gap: 16px;
+}
+.login-container h1 {
+  font-size: 30px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+.login-container p {
+  text-align: center;
+  color: var(--muted);
+  margin-bottom: 20px;
+}
+.login-container label {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 4px;
+  margin-top: 8px;
+  display: block;
+  text-align: center;
+}
+.login-container input[type="text"],
+.login-container input[type="email"],
+.login-container input[type="password"] {
+  height: 46px;
+  border-radius: 14px;
+  border: 1px solid #f3dbe6;
+  padding: 10px 14px;
+  margin-bottom: 18px;
+  font-family: inherit;
+  font-size: 15px;
+  outline: none;
+  background: #fffafc;
+  transition: 0.2s;
+  width: 80%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+.login-container input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px rgba(240, 138, 177, 0.2);
+}
+.btn {
+  border: none;
+  border-radius: 16px;
+  padding: 12px 18px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  background: var(--primary);
+  color: white;
+  box-shadow: 0 8px 16px rgba(240, 138, 177, 0.2);
+  margin-top: 8px;
+  transition: 0.2s;
+  letter-spacing: 0.5px;
+  width: 85%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.btn:hover {
+  opacity: 0.9;
+}
+.toggle {
+  background: transparent;
+  border: none;
+  color: var(--primary);
+  font-size: 15px;
+  cursor: pointer;
+  text-decoration: underline;
+  margin-top: 14px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.error {
+  color: #c94d6d;
+  font-size: 13px;
+  margin-bottom: 8px;
+  text-align: center;
+}
+.hidden {
+  display: none;
+}
+.spacer {
+  height: 20px;
+}
+.timer {
+  font-size: 14px;
+  color: var(--primary);
+  text-align: center;
+  margin-top: 8px;
+}
+
+/* ===== Estilos da página de Perfil ===== */
+body.perfil-page {
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #fffafc;
+  color: #333;
+}
+.profile-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 1rem 1rem 1rem;
+  background-color: #ffe3ec;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+.profile-pic {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  border: 4px solid #c5a78d;
+  background-color: #fff;
+  background-size: cover;
+  background-position: center;
+  margin-bottom: 1rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.profile-pic:hover {
+  transform: scale(1.05);
+}
+.perfil-page h2 {
+  margin: 0.3rem 0;
+  color: #5e5047;
+  font-size: 1.8rem;
+}
+.buttons {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 1rem;
+}
+.buttons button {
+  padding: 0.6rem 1.5rem;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  background-color: #fff0f5;
+  color: #c5a78d;
+  transition: 0.3s;
+}
+.buttons button:hover {
+  background-color: #c5a78d;
+  color: #fff;
+}
+.tabs {
+  display: flex;
+  justify-content: space-around;
+  border-bottom: 1px solid #eee;
+  margin: 1rem 0;
+}
+.tab {
+  padding: 0.8rem 0;
+  cursor: pointer;
+  font-weight: 500;
+  color: #555;
+  transition: 0.2s;
+  position: relative;
+}
+.tab.active {
+  color: #c5a78d;
+  font-weight: 600;
+}
+.tab.active::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 10%;
+  width: 80%;
+  height: 3px;
+  background-color: #c5a78d;
+  border-radius: 2px;
+}
+.tab-content {
+  padding: 1rem;
+  text-align: center;
+}
+.post {
+  background-color: #fff;
+  border-radius: 15px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+.post img {
+  width: 95%;
+  border-radius: 12px;
+  margin-bottom: 0.5rem;
+}
+.post p {
+  color: #555;
+  font-size: 0.9rem;
+}
+input[type="file"] {
+  display: none;
+}
+@media (max-width: 500px) {
+  .profile-pic {
+    width: 100px;
+    height: 100px;
+  }
+  .post img {
+    width: 100%;
+  }
+}
+
+/* ===== Estilos da página de Serviços ===== */
+body.servicos-page {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #fff;
+  color: #333;
+  padding: 20px;
+}
+
+.servicos-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+.servicos-header h1 {
+  font-size: 2.5rem;
+  font-weight: 500;
+  color: #5e5047;
+  letter-spacing: 1px;
+}
+
+.stories {
+  display: flex;
+  overflow-x: auto;
+  gap: 15px;
+  padding: 10px 0;
+  margin-bottom: 30px;
+}
+.story {
+  flex: 0 0 auto;
+  text-align: center;
+  cursor: pointer;
+}
+.story img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 3px solid #c5a78d;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+.story:hover img {
+  transform: scale(1.05);
+}
+.story p {
+  margin-top: 8px;
+  font-size: 0.9rem;
+  color: #8c7b6e;
+}
+.services {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+.service-card {
+  background-color: #fdfdfd;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  padding: 20px;
+  transition: box-shadow 0.3s ease;
+}
+.service-card:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+.service-card h3 {
+  color: #5e5047;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+.service-card p {
+  color: #8c7b6e;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+.stories::-webkit-scrollbar {
+  height: 6px;
+}
+.stories::-webkit-scrollbar-thumb {
+  background: #c5a78d;
+  border-radius: 10px;
+}
+@media (max-width: 600px) {
+  .servicos-header h1 {
+    font-size: 1.8rem;
+  }
+}
+
+/* ===== Estilos da página de Agendamento ===== */
+body.agendamento-page {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #fffafc;
+  color: #333;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.agendamento-header {
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem 2rem;
+  box-sizing: border-box;
+}
+
+.agendamento-story {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 4px solid #c5a78d;
+  overflow: hidden;
+  background-color: #ffe3ec;
+  background-size: cover;
+  background-position: center;
+  flex-shrink: 0;
+}
+
+.agendamento-header h1 {
+  font-size: 2rem;
+  color: #c5a78d;
+  margin: 0;
+  flex-grow: 1;
+  text-align: center;
+}
+
+.agendamento-main {
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+  padding: 2rem;
+  width: 90%;
+  max-width: 450px;
+  margin: 1rem auto 2rem auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.agendamento-main h2 {
+  text-align: center;
+  color: #c5a78d;
+  margin-bottom: 1.5rem;
+  font-size: 1.4rem;
+}
+
+.agendamento-main form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+}
+
+.agendamento-main label {
+  font-weight: 500;
+  color: #555;
+}
+
+.agendamento-main input {
+  padding: 0.8rem;
+  border: 1px solid #c5a78d;
+  border-radius: 10px;
+  font-size: 1rem;
+  outline: none;
+  background-color: #fffafc;
+  width: 100%;
+}
+
+.agendamento-main input:focus {
+  border-color: #e57aa5;
+  box-shadow: 0 0 5px rgba(229,122,165,0.4);
+}
+
+.calendar {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.day {
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  background-color: #fff;
+  transition: 0.2s;
+  border: 1px solid #f0dada;
+}
+.day:hover {
+  background-color: #f8c7d8;
+  color: #fff;
+}
+.unavailable {
+  background-color: #ddd;
+  color: #777;
+  cursor: not-allowed;
+}
+.selected {
+  background-color: #e57aa5 !important;
+  color: #fff !important;
+}
+
+.horarios {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 1rem;
+}
+.hora {
+  padding: 0.6rem 1rem;
+  border: 1px solid #c5a78d;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s;
+  background-color: #fff;
+}
+.hora:hover {
+  background-color: #f8c7d8;
+  color: white;
+}
+.hora.selecionada {
+  background-color: #e57aa5;
+  color: white;
+}
+
+.agendamento-main button[type="submit"] {
+  background-color: #ffe3ec;
+  color: #333;
+  border: 1px solid #c5a78d;
+  border-radius: 12px;
+  padding: 1rem;
+  font-size: 1rem;
+  margin-top: 1.5rem;
+  width: 100%;
+  cursor: pointer;
+  transition: 0.3s;
+  font-weight: 500;
+}
+.agendamento-main button[type="submit"]:hover {
+  background-color: #f8c7d8;
+  color: white;
+}
+
+.agendamento-footer {
+  text-align: center;
+  color: #888;
+  font-size: 0.9rem;
+  margin: 1rem 0;
+}
+
+@media (max-width: 600px) {
+  .agendamento-header {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+    padding: 1rem;
+  }
+  .agendamento-story {
+    width: 100px;
+    height: 100px;
+  }
+  .agendamento-header h1 {
+    font-size: 1.8rem;
+  }
+  .agendamento-main {
+    width: 95%;
+    padding: 1.5rem;
+  }
+}
+
+/* ===== Estilos do menu lateral ===== */
+.menu-page {
+  background: #fff;
+  color: #333;
+}
+
+.menu-toggle.menu-page {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: #c5a78d;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  z-index: 1001;
+}
+
+.sidebar.menu-page {
+  position: fixed;
+  top: 0;
+  right: -260px;
+  width: 260px;
+  height: 100%;
+  background-color: #fefefe;
+  box-shadow: -2px 0 8px rgba(0,0,0,0.1);
+  padding: 20px;
+  transition: right 0.3s ease;
+  z-index: 1000;
+  border-left: 1px solid #eee;
+}
+.sidebar.menu-page.open { right: 0; }
+.sidebar.menu-page h2 { font-size: 1.5rem; margin-bottom: 20px; color: #5e5047; }
+.sidebar.menu-page ul { list-style: none; padding: 0; }
+.sidebar.menu-page ul li { padding: 12px 10px; border-radius: 8px; margin-bottom: 10px; cursor: pointer; color: #5e5047; transition: background 0.2s; }
+.sidebar.menu-page ul li:hover { background-color: #f3f0ee; }
+.sidebar.menu-page ul li a { display: block; color: inherit; text-decoration: none; }
+.overlay.menu-page { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.3); display: none; z-index: 999; }
+.overlay.menu-page.active { display: block; }
+@media (max-width: 600px) {
+  .sidebar.menu-page { width: 80%; }
+}
+
+/* ===== Estilos da página SOBRE ===== */
+body.sobre-page {
+  background-color: #f8f5f2;
+  color: #8c7b6e;
+}
+
+.sobre-main {
+  max-width: 800px;
+  margin: 3rem auto;
+  padding: 2rem;
+  background-color: #fffaf5;
+  border-radius: 30px;
+  box-shadow: 0 0 15px rgba(197, 167, 141, 0.3);
+}
+
+.sobre-main h2 {
+  text-align: center;
+  color: #c5a78d;
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+}
+
+.sobre-main p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  text-align: justify;
+}
+
+.sobre-footer {
+  text-align: center;
+  padding: 1.5rem;
+  color: white;
+  background-color: #8c7b6e;
+  border-top-left-radius: 50px;
+  border-top-right-radius: 50px;
+  font-size: 0.9rem;
+}

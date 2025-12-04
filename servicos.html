@@ -4,112 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Aurora Serviços de Beleza</title>
-  <style>
-    /* Reset básico */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #fff;
-      color: #333;
-      padding: 20px;
-    }
-
-    header {
-      text-align: center;
-      margin-bottom: 30px;
-    }
-
-    header h1 {
-      font-size: 2.5rem;
-      font-weight: 500;
-      color: #5e5047;
-      letter-spacing: 1px;
-    }
-
-    .stories {
-      display: flex;
-      overflow-x: auto;
-      gap: 15px;
-      padding: 10px 0;
-      margin-bottom: 30px;
-    }
-
-    .story {
-      flex: 0 0 auto;
-      text-align: center;
-      cursor: pointer;
-    }
-
-    .story img {
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      border: 3px solid #c5a78d;
-      object-fit: cover;
-      transition: transform 0.3s ease;
-    }
-
-    .story:hover img {
-      transform: scale(1.05);
-    }
-
-    .story p {
-      margin-top: 8px;
-      font-size: 0.9rem;
-      color: #8c7b6e;
-    }
-
-    .services {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-    }
-
-    .service-card {
-      background-color: #fdfdfd;
-      border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-      padding: 20px;
-      transition: box-shadow 0.3s ease;
-    }
-
-    .service-card:hover {
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    }
-
-    .service-card h3 {
-      color: #5e5047;
-      font-weight: 600;
-      margin-bottom: 10px;
-    }
-
-    .service-card p {
-      color: #8c7b6e;
-      font-size: 0.95rem;
-      line-height: 1.5;
-    }
-
-    /* Scroll leve para os stories */
-    .stories::-webkit-scrollbar {
-      height: 6px;
-    }
-
-    .stories::-webkit-scrollbar-thumb {
-      background: #c5a78d;
-      border-radius: 10px;
-    }
-
-    @media (max-width: 600px) {
-      header h1 {
-        font-size: 1.8rem;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -201,14 +96,6 @@
     </div>
   </section>
 
-  <script>
-    function scrollToService(id) {
-      const section = document.getElementById(id);
-      if (section) {
-        section.scrollIntoView({ behavior: "smooth" });
-      }
-    }
-  </script>
 
 </body>
 <script src="script.js"></script>
