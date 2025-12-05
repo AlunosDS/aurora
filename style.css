@@ -2,57 +2,12 @@
    Contains variables, base layout, header/nav, sidebar and responsive rules
 */
 :root{
-  --bg: #f9f6f2;
-  --paper: #fffafc;
-  --accent: #c5a78d;
-  --accent-soft: #ffe3ec;
-  --text: #333;
-  --muted: #8c7b6e;
-  --radius: 12px;
-  --max-width: 1100px;
-  --nav-height: 64px;
+  letter-spacing:0.2px;
 }
-
-*{ box-sizing: border-box; }
-html,body{ height:100%; margin:0; padding:0; font-family:'Quicksand', system-ui, sans-serif; background:var(--bg); color:var(--text); }
-
-.container{
-  max-width: var(--max-width);
-  margin:0 auto;
-  padding:0 16px;
+.sidebar li:hover{
+  background:var(--accent-soft);
+  color:var(--accent);
 }
-
-/* Header */
-.site-header{
-  background:#fff; height:var(--nav-height); display:flex; gap:16px; align-items:center; justify-content:space-between; padding:0 20px; box-shadow: 0 1px 0 rgba(0,0,0,0.03);
-}
-.site-brand{ font-weight:700; color:var(--accent); font-size:1.25rem; letter-spacing:1px; text-decoration:none; }
-
-/* Top nav */
-.main-nav{ display:flex; gap:18px; align-items:center; }
-.main-nav a{ color:var(--muted); text-decoration:none; font-weight:600; padding:6px 10px; border-radius:9px; margin:0 8px; }
-.main-nav a:hover, .main-nav a.active{ background:var(--accent-soft); color:var(--accent); }
-
-/* Mobile top nav collapse (if present) */
-.nav-collapse{ display:none; }
-.nav-toggle{ display:none; border:none; background:transparent; font-size:1.2rem; cursor:pointer; }
-
-/* HERO */
-.hero{ padding:40px 16px; text-align:center; }
-.hero h2{ color:#5e5047; }
-
-/* Generic page main */
-main{ padding:24px 16px; }
-
-/* Sidebar (right) */
-.menu-toggle{ background:var(--accent); color:#fff; border:none; padding:10px 12px; border-radius:8px; cursor:pointer; }
-.sidebar{ position:fixed; top:0; right:-320px; width:320px; max-width:90%; height:100%; background:#fff; box-shadow:-6px 0 20px rgba(0,0,0,0.12); transition:right .26s ease; z-index:1500; padding:16px; }
-.sidebar.open{ right:0; }
-.sidebar h2{ margin-top:8px; color:var(--muted); }
-.sidebar ul{ list-style:none; padding:0; margin-top:10px; }
-.sidebar li{ padding:12px 10px; border-radius:8px; color:var(--muted); cursor:pointer; }
-.sidebar li a{ color:inherit; text-decoration:none; display:block; }
-.sidebar li:hover{ background:#f6f3ee; color:var(--accent); }
 
 /* Overlay for modals and sidebar */
 .overlay{ position:fixed; inset:0; background:rgba(0,0,0,0.35); display:none; z-index:1400; }
