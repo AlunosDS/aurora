@@ -11,10 +11,19 @@
 <body>
 
 <body class="sobre-page">
-    <header class="site-header container">
-        <a class="site-brand" href="index.html">AURORA</a>
+    <header>
+        <nav style="text-align:center;">
+            <a href="index.html">Início</a> |
+            <a href="servicos.html">Serviços</a> |
+            <a href="agendamento.html">Agendamento</a> |
+            <a href="sobre.html">Sobre</a> |
+            <a href="perfil.html">Perfil</a> |
+            <a href="login.html">Entrar</a>
+            <!-- Botão de Ajuda destacado -->
+            <button type="button" class="ajuda-btn" onclick="document.getElementById('helpModal').style.display='flex'">Ajuda</button>
+        </nav>
     </header>
-    <main class="sobre-main">
+    <main class="sobre-main main">
         <h2>Sobre o Aurora</h2>
         <p>
             O <strong>Aurora</strong> é um aplicativo de beleza pensado para quem valoriza o autocuidado, o estilo e o bem-estar.
@@ -26,10 +35,36 @@
             Assim como a aurora, a vida sempre traz uma nova luz depois da escuridão.
         </p>
     </main>
-    <footer class="sobre-footer">
-        &copy; 2025 Aurora • Todos os direitos reservados
-    </footer>
+        <footer class="sobre-footer">
+                &copy; 2025 Aurora • Todos os direitos reservados
+        </footer>
+
+        <!-- Modal de Ajuda -->
+        <div id="helpModal" class="help-modal" role="dialog" aria-modal="true" aria-labelledby="helpTitle" aria-describedby="helpDesc">
+            <div class="dialog">
+                <button id="closeHelpModal" class="close-btn" aria-label="Fechar">✕</button>
+                <h3 id="helpTitle">Ajuda</h3>
+                <p id="helpDesc">Preencha o formulário abaixo e envie. Você pode compartilhar sua localização para facilitar nossa resposta.</p>
+                <form id="helpForm" class="help-form" novalidate>
+                    <label>Nome (opcional)</label>
+                    <input id="helpName" type="text" class="form-input" placeholder="Seu nome (opcional)" />
+                    <label>Descrição</label>
+                    <textarea id="helpDescription" class="form-textarea" placeholder="Descreva seu problema ou dúvida" required></textarea>
+                    <div class="form-row">
+                        <input id="shareLocation" type="checkbox" />
+                        <label for="shareLocation">Compartilhar localização</label>
+                        <small id="locationStatus">Nenhuma localização</small>
+                    </div>
+                    <input id="helpLat" type="hidden" />
+                    <input id="helpLng" type="hidden" />
+                    <div class="form-row end">
+                        <button type="button" onclick="submitHelpForm()" class="primary">Enviar</button>
+                        <button type="button" id="cancelHelp" class="secondary">Cancelar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
 
 </body>
-        <script src="script.js"></script>
-    </body>
+<script src="script.js"></script>
+</html>

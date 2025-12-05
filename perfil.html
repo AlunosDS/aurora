@@ -9,8 +9,17 @@
 </head>
 <body>
 
-  <header class="site-header container">
-    <a class="site-brand" href="index.html">AURORA</a>
+  <header>
+    <nav style="text-align:center;">
+      <a href="index.html">Início</a> |
+      <a href="servicos.html">Serviços</a> |
+      <a href="agendamento.html">Agendamento</a> |
+      <a href="sobre.html">Sobre</a> |
+      <a href="perfil.html">Perfil</a> |
+      <a href="login.html">Entrar</a>
+      <!-- Botão de Ajuda destacado -->
+      <button type="button" class="ajuda-btn" onclick="document.getElementById('helpModal').style.display='flex'">Ajuda</button>
+    </nav>
   </header>
 
   <div class="profile-header">
@@ -30,7 +39,7 @@
     <div class="tab" onclick="showTab(1)">Avaliações</div>
   </div>
 
-  <div class="tab-content" id="tabContent">
+  <div class="tab-content main" id="tabContent">
     <div id="feed">
       <div class="post">
         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBr7gDpqq4tc16W1nN0lB0AchwaLAqDo0UOA&s" alt="Post 1">
@@ -52,5 +61,32 @@
   </div>
 
 
-</body>
+  <!-- Modal de Ajuda -->
+  <div id="helpModal" class="help-modal" role="dialog" aria-modal="true" aria-labelledby="helpTitle" aria-describedby="helpDesc">
+    <div class="dialog">
+      <button id="closeHelpModal" class="close-btn" aria-label="Fechar">✕</button>
+      <h3 id="helpTitle">Ajuda</h3>
+      <p id="helpDesc">Preencha o formulário abaixo e envie. Você pode compartilhar sua localização para facilitar nossa resposta.</p>
+      <form id="helpForm" class="help-form" novalidate>
+        <label>Nome (opcional)</label>
+        <input id="helpName" type="text" class="form-input" placeholder="Seu nome (opcional)" />
+        <label>Descrição</label>
+        <textarea id="helpDescription" class="form-textarea" placeholder="Descreva seu problema ou dúvida" required></textarea>
+        <div class="form-row">
+          <input id="shareLocation" type="checkbox" />
+          <label for="shareLocation">Compartilhar localização</label>
+          <small id="locationStatus">Nenhuma localização</small>
+        </div>
+        <input id="helpLat" type="hidden" />
+        <input id="helpLng" type="hidden" />
+        <div class="form-row end">
+          <button type="button" onclick="submitHelpForm()" class="primary">Enviar</button>
+          <button type="button" id="cancelHelp" class="secondary">Cancelar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+<footer>
+  &copy; 2025 Aurora - Todos os direitos reservados.
+</footer>
 </html>

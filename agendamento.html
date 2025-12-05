@@ -11,12 +11,20 @@
 
 
   <!-- Cabeçalho -->
-  <header class="site-header container">
-    <div class="story" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQuMV1_8b1pjiHe6lTfRLqUZfOtDOOCGQ4rSA&s');"></div>
-    <h1>Unhas em Gel</h1>
+  <header>
+    <nav style="text-align:center;">
+      <a href="index.html">Início</a> |
+      <a href="servicos.html">Serviços</a> |
+      <a href="agendamento.html">Agendamento</a> |
+      <a href="sobre.html">Sobre</a> |
+      <a href="perfil.html">Perfil</a> |
+      <a href="login.html">Entrar</a>
+      <!-- Botão de Ajuda destacado -->
+      <button type="button" class="ajuda-btn" onclick="document.getElementById('helpModal').style.display='flex'">Ajuda</button>
+    </nav>
   </header>
 
-  <main>
+  <main class="main">
     <h2>Agende seu horário</h2>
     <form id="form-agendamento">
       <label for="nome">Nome completo:</label>
@@ -24,6 +32,19 @@
 
       <label for="telefone">Telefone:</label>
       <input type="tel" id="telefone" name="telefone" placeholder="(00) 00000-0000" required>
+
+      <label for="servicos-group">Selecione o(s) serviço(s):</label>
+      <div id="servicos-group" class="servicos-checkbox-group">
+        <label class="servico-checkbox"><input type="checkbox" name="servicos" value="Fibra de Gel nas Unhas"> Fibra de Gel nas Unhas</label>
+        <label class="servico-checkbox"><input type="checkbox" name="servicos" value="Tratamento Capilar"> Tratamento Capilar</label>
+        <label class="servico-checkbox"><input type="checkbox" name="servicos" value="Cortes Femininos"> Cortes Femininos</label>
+        <label class="servico-checkbox"><input type="checkbox" name="servicos" value="Mega Hair"> Mega Hair</label>
+        <label class="servico-checkbox"><input type="checkbox" name="servicos" value="Design de Sobrancelhas"> Design de Sobrancelhas</label>
+        <label class="servico-checkbox"><input type="checkbox" name="servicos" value="Extensão de Cílios"> Extensão de Cílios</label>
+        <label class="servico-checkbox"><input type="checkbox" name="servicos" value="Depilação a laser"> Depilação a laser</label>
+        <label class="servico-checkbox"><input type="checkbox" name="servicos" value="Limpeza de pele"> Limpeza de pele</label>
+        <label class="servico-checkbox"><input type="checkbox" name="servicos" value="Massagem"> Massagem</label>
+      </div>
 
       <label>Escolha o dia:</label>
       <div class="calendar" id="calendar"></div>
