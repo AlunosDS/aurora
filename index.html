@@ -46,14 +46,23 @@
       <h3 id="helpTitle">Ajuda</h3>
       <p id="helpDesc">Preencha o formulário abaixo e envie. Você pode compartilhar sua localização para facilitar nossa resposta.</p>
       <form id="helpForm" class="help-form" novalidate>
-        <label>Nome (opcional)</label>
-        <input id="helpName" type="text" class="form-input" placeholder="Seu nome (opcional)" />
-        <label>Descrição</label>
-        <textarea id="helpDescription" class="form-textarea" placeholder="Descreva seu problema ou dúvida" required></textarea>
+        <div class="form-row side-by-side">
+          <div class="input-group">
+            <label for="helpName">Nome (opcional)</label>
+            <input id="helpName" type="text" class="form-input small-input" placeholder="Seu nome (opcional)" />
+          </div>
+          <div class="input-group">
+            <label for="helpPhone">Telefone</label>
+            <input id="helpPhone" type="tel" class="form-input small-input" placeholder="(99) 99999-9999" />
+          </div>
+        </div>
+        <label for="helpDescription">Descrição</label>
+        <textarea id="helpDescription" class="form-textarea small-textarea" placeholder="Descreva seu problema ou dúvida" required></textarea>
         <div class="form-row">
           <input id="shareLocation" type="checkbox" />
           <label for="shareLocation">Compartilhar localização</label>
           <small id="locationStatus">Nenhuma localização</small>
+          <a id="locationLink" href="#" target="_blank" style="display:none; color:var(--primary); font-weight:600; margin-left:10px; text-decoration:underline;">Ver no mapa</a>
         </div>
         <input id="helpLat" type="hidden" />
         <input id="helpLng" type="hidden" />

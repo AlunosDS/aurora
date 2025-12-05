@@ -47,14 +47,23 @@ window.addEventListener('DOMContentLoaded', () => {
           document.getElementById('helpLat').value = lat;
           document.getElementById('helpLng').value = lng;
           status.textContent = `Local capturado: ${lat}, ${lng}`;
+          const link = document.getElementById('locationLink');
+          if (link) {
+            link.href = `https://www.google.com/maps?q=${lat},${lng}`;
+            link.style.display = 'inline';
+          }
         }, (err) => {
           status.textContent = 'Permissão negada';
           this.checked = false;
+          const link = document.getElementById('locationLink');
+          if (link) link.style.display = 'none';
         }, { timeout:10000 });
       } else {
         status.textContent = 'Nenhuma localização';
         document.getElementById('helpLat').value = '';
         document.getElementById('helpLng').value = '';
+        const link = document.getElementById('locationLink');
+        if (link) link.style.display = 'none';
       }
     });
   }
